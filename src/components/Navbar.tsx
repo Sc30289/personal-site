@@ -132,7 +132,7 @@ export default function Navbar() {
             className="group flex items-baseline gap-1 text-lg font-semibold tracking-tight text-white"
             onClick={() => setOpen(false)}
           >
-            <span>Sc</span>
+            <span>{profile.logo}</span>
             <span className="h-2 w-2 rounded-full bg-gradient-to-br from-accent to-accent-violet transition-transform group-hover:scale-125" />
             <span className="ml-2 hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted sm:inline">
               portfolio

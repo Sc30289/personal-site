@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Sc 的个人网站 —— 深色星空主题的个人作品集与博客",
+  "description": "豆杰晟的个人网站 —— 深色星空主题的个人作品集与博客",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

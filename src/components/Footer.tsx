@@ -9,10 +9,11 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link to="/" className="flex items-baseline gap-1 text-lg font-semibold text-white">
-              Sc<span className="h-2 w-2 rounded-full bg-gradient-to-br from-accent to-accent-violet" />
+              {profile.logo}
+              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-accent to-accent-violet" />
             </Link>
             <p className="mt-3 max-w-xs text-[13px] leading-6 text-muted">
-              计算机专业学生，关注前端工程与 AI 应用。用作品记录成长，用文字沉淀思考。
+              大连民族大学物联网工程 2024 级本科生，关注前端工程、物联网与 AI 应用。用作品记录成长，用文字沉淀思考。
             </p>
             <div className="mt-5 flex items-center gap-2">
               <a
@@ -79,7 +80,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/[0.06] pt-6 text-[12px] text-muted/70 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Sc · 保留所有权利</p>
+          <p>© {new Date().getFullYear()} 豆杰晟 · 保留所有权利</p>
           <p className="inline-flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
             使用 React + TypeScript + Vite 构建 · 部署于 GitHub Pages

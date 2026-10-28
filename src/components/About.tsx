@@ -73,6 +73,13 @@ export default function About() {
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <dt className="inline-flex items-center gap-2 text-muted">
+                      <Icon name="briefcase" size={15} />
+                      学校
+                    </dt>
+                    <dd className="text-mist">{profile.school}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <dt className="inline-flex items-center gap-2 text-muted">
                       <Icon name="mail" size={15} />
                       邮箱
                     </dt>

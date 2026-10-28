@@ -162,7 +162,7 @@ for (const doc of docs) {
   </div>
   <div class="doc">${body}</div>
   <div class="doc-foot">
-    <span>Sc · 个人网站 · <b>${doc.title}</b></span>
+    <span>豆杰晟 · 个人网站 · <b>${doc.title}</b></span>
     <span>React + TypeScript + Vite · 2026</span>
   </div>
 </div>

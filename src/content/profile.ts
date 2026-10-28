@@ -11,6 +11,9 @@ export interface TimelineItem {
 
 export interface Profile {
   name: string
+  initials: string
+  logo: string
+  school: string
   role: string
   status: string
   tagline: string
@@ -26,40 +29,43 @@ export interface Profile {
 }
 
 export const profile: Profile = {
-  name: 'Sc',
-  role: '计算机科学与技术 · 本科在读',
+  name: '豆杰晟',
+  initials: 'DJ',
+  logo: '豆',
+  school: '大连民族大学',
+  role: '物联网工程 · 2024 级本科生',
   status: '在读 · 寻找 2026 暑期实习',
   tagline:
-    '我喜欢把想法做成能跑起来的东西：前端工程、浏览器扩展，以及把 AI 塞进日常小工具里。',
+    '我喜欢把想法做成能跑起来的东西：从网页、浏览器扩展，到单片机和小传感器，也想把 AI 塞进日常的小工具里。',
   intro: [
-    '你好，我是 Sc。一名计算机科学与技术专业的本科生，平时把大部分时间花在浏览器和编辑器之间——写页面、拆扩展、读论文，再把学到的东西写成能用的作品。',
+    '你好，我是豆杰晟，大连民族大学物联网工程专业 2024 级本科生。我的兴趣横跨「软件」和「硬件」：一边写前端页面、做浏览器扩展，一边折腾单片机和传感器。',
     '我偏爱「先跑通，再打磨」的做法：先用最小可用版本验证想法，再一点点补上细节。这个网站本身也是这么来的——先写清楚 PRD 和技术设计，再让 AI 和我一起把它实现出来。',
     '写代码之外，我喜欢把踩过的坑整理成博客。如果这些记录能帮到下一个遇到同样问题的人，那就再好不过了。',
   ],
-  location: '中国',
+  location: '辽宁 · 大连',
   email: '3239296201@qq.com',
   github: 'https://github.com/Sc30289',
   githubName: 'Sc30289',
-  focus: ['前端工程', 'AI 应用', '浏览器扩展'],
+  focus: ['前端工程', '物联网应用', 'AI 应用'],
   stats: [
     { label: '项目', value: '4' },
     { label: '博客', value: '4' },
-    { label: '技术方向', value: '2' },
+    { label: '技术方向', value: '3' },
     { label: '好奇心', value: '∞' },
   ],
   timeline: [
     {
-      period: '2023.09',
-      title: '进入大学，开始写第一行代码',
-      desc: '从 C 语言和数据结构起步，第一次体会到「程序真的会按你写的跑」。',
+      period: '2024.09',
+      title: '进入大连民族大学，读物联网工程',
+      desc: '从 C 语言和电路基础起步，第一次体会到「程序真的会按你写的跑」。',
     },
     {
-      period: '2024.03',
+      period: '2024.12',
       title: '第一个真正上线的网页',
       desc: 'HTML / CSS / JavaScript 三件套，把课程作业做成了一个可以分享的页面。',
     },
     {
-      period: '2024.10',
+      period: '2025.03',
       title: '转向 React + TypeScript',
       desc: '开始用组件化和类型系统写项目，也第一次认真读官方文档。',
     },

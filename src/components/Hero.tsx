@@ -35,7 +35,7 @@ export default function Hero() {
 
           <Reveal delay={80}>
             <h1 className="mt-7 text-4xl font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[64px]">
-              你好，我是 <span className="gradient-text">Sc</span>
+              你好，我是 <span className="gradient-text">{profile.name}</span>
             </h1>
           </Reveal>
 
@@ -95,12 +95,13 @@ export default function Hero() {
               <div className="mt-6 flex items-center gap-4">
                 <div className="relative h-16 w-16 shrink-0 rounded-2xl bg-gradient-to-br from-accent via-accent-violet to-accent-cyan p-[2px]">
                   <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-ink-900 text-lg font-semibold tracking-wide text-white">
-                    SC
+                    {profile.initials}
                   </div>
                 </div>
                 <div>
                   <p className="text-base font-semibold text-white">{profile.name}</p>
                   <p className="mt-0.5 text-[13px] text-muted">{profile.role}</p>
+                  <p className="mt-0.5 text-[11px] text-muted/70">{profile.school}</p>
                 </div>
               </div>
 

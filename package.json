@@ -1,0 +1,36 @@
+{
+  "name": "personal-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Sc 的个人网站 —— 深色星空主题的个人作品集与博客",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "docs:render": "node scripts/render-docs.mjs"
+  },
+  "dependencies": {
+    "github-slugger": "2.0.0",
+    "highlight.js": "11.10.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-markdown": "9.0.1",
+    "react-router-dom": "6.26.2",
+    "rehype-highlight": "7.0.0",
+    "rehype-slug": "6.0.0",
+    "remark-gfm": "4.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.15",
+    "@types/react": "18.3.11",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.2",
+    "autoprefixer": "10.4.20",
+    "marked": "14.1.2",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.13",
+    "typescript": "5.6.3",
+    "vite": "5.4.8"
+  }
+}

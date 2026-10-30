@@ -29,7 +29,7 @@ export default function SettingsAdmin() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-white">站点设置</h1>
+        <h1 className="text-xl font-semibold text-[#111827]">站点设置</h1>
         <p className="mt-1 text-[12px] text-muted">标题、描述与数据备份</p>
       </div>
 

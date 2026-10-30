@@ -41,7 +41,7 @@ export default function ProjectsSection() {
                 <Link
                   key={project.slug}
                   to={`/projects/${project.slug}`}
-                  className="group inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-[12.5px] text-muted transition-colors hover:border-accent/40 hover:text-white"
+                  className="group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.02] px-3.5 py-1.5 text-[12.5px] text-muted transition-colors hover:border-accent/40 hover:text-[#111827]"
                 >
                   {project.title}
                   <Icon name="arrow-up-right" size={12} />

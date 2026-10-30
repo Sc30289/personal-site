@@ -7,18 +7,18 @@ export default {
     extend: {
       colors: {
         ink: {
-          950: '#06100B',
-          900: '#0A1610',
-          800: '#102019',
-          700: '#172C22',
-          600: '#21402F',
+          950: '#FFFFFF',
+          900: '#F6F7F9',
+          800: '#FFFFFF',
+          700: '#F0F2F5',
+          600: '#E4E7EC',
         },
-        mist: '#E8F1E9',
-        muted: '#96A99B',
+        mist: '#1F2937',
+        muted: '#5B6472',
         accent: {
-          DEFAULT: '#F59E0B',
-          violet: '#FB7185',
-          cyan: '#FBBF24',
+          DEFAULT: '#D97706',
+          violet: '#E11D48',
+          cyan: '#B45309',
         },
       },
       fontFamily: {
@@ -34,12 +34,12 @@ export default {
         mono: ['Cascadia Code', 'JetBrains Mono', 'Consolas', 'monospace'],
       },
       boxShadow: {
-        glow: '0 0 60px -12px rgba(245, 158, 11, 0.45)',
+        glow: '0 0 60px -18px rgba(217, 119, 6, 0.35)',
         card: '0 24px 60px -30px rgba(0, 0, 0, 0.9)',
       },
       backgroundImage: {
         'grid-fade':
-          'radial-gradient(circle at 50% 0%, rgba(245,158,11,0.14), transparent 55%)',
+          'radial-gradient(circle at 50% 0%, rgba(217,119,6,0.07), transparent 55%)',
       },
       keyframes: {
         float: {

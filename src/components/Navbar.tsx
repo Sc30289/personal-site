@@ -118,7 +118,7 @@ export default function Navbar() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-ink-950"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-[#201509]"
       >
         跳到主要内容
       </a>
@@ -131,7 +131,7 @@ export default function Navbar() {
         <nav className="container-page flex items-center justify-between" aria-label="主导航">
           <Link
             to="/"
-            className="group flex items-baseline gap-1 text-lg font-semibold tracking-tight text-white"
+            className="group flex items-baseline gap-1 text-lg font-semibold tracking-tight text-[#111827]"
             onClick={() => setOpen(false)}
           >
             <span>{profile.logo}</span>
@@ -149,8 +149,8 @@ export default function Navbar() {
                     to={link.to}
                     className={`rounded-full px-3.5 py-2 text-sm transition-colors ${
                       isActive(link)
-                        ? 'bg-white/[0.06] text-white'
-                        : 'text-muted hover:text-white'
+                        ? 'bg-black/[0.06] text-[#111827]'
+                        : 'text-muted hover:text-[#111827]'
                     }`}
                   >
                     {link.label}
@@ -163,8 +163,8 @@ export default function Navbar() {
                     onClick={() => goSection(link.id)}
                     className={`rounded-full px-3.5 py-2 text-sm transition-colors ${
                       isActive(link)
-                        ? 'bg-white/[0.06] text-white'
-                        : 'text-muted hover:text-white'
+                        ? 'bg-black/[0.06] text-[#111827]'
+                        : 'text-muted hover:text-[#111827]'
                     }`}
                   >
                     {link.label}
@@ -179,7 +179,7 @@ export default function Navbar() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="hidden h-9 w-9 items-center justify-center rounded-full border border-white/10 text-muted transition-colors hover:border-accent/40 hover:text-white sm:inline-flex"
+              className="hidden h-9 w-9 items-center justify-center rounded-full border border-black/10 text-muted transition-colors hover:border-accent/40 hover:text-[#111827] sm:inline-flex"
               aria-label="GitHub 主页"
             >
               <Icon name="github" size={17} />
@@ -195,7 +195,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-mist lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-mist lg:hidden"
               aria-label={open ? '关闭菜单' : '打开菜单'}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -220,7 +220,7 @@ export default function Navbar() {
                 key={link.to}
                 to={link.to}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-white/[0.06] py-4 text-2xl font-medium text-white transition-colors hover:text-accent"
+                className="flex items-center justify-between border-b border-black/[0.06] py-4 text-2xl font-medium text-[#111827] transition-colors hover:text-accent"
                 style={{ transitionDelay: `${index * 30}ms` }}
               >
                 {link.label}
@@ -231,7 +231,7 @@ export default function Navbar() {
                 key={link.id}
                 type="button"
                 onClick={() => goSection(link.id)}
-                className="flex items-center justify-between border-b border-white/[0.06] py-4 text-left text-2xl font-medium text-white transition-colors hover:text-accent"
+                className="flex items-center justify-between border-b border-black/[0.06] py-4 text-left text-2xl font-medium text-[#111827] transition-colors hover:text-accent"
               >
                 {link.label}
                 <Icon name="arrow-up-right" size={18} className="text-muted" />

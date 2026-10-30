@@ -23,20 +23,20 @@ export default function AdminLogin() {
     <div className="flex min-h-screen items-center justify-center bg-ink-950 px-5">
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-violet text-base font-semibold text-ink-950">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-violet text-base font-semibold text-[#201509]">
             豆
           </span>
-          <h1 className="mt-4 text-xl font-semibold text-white">管理后台</h1>
+          <h1 className="mt-4 text-xl font-semibold text-[#111827]">管理后台</h1>
           <p className="mt-1 text-[12px] text-muted">登录后可编辑个人信息、技能、项目与博客</p>
         </div>
 
-        <form onSubmit={onSubmit} className="rounded-2xl border border-white/[0.07] bg-ink-800/60 p-6">
+        <form onSubmit={onSubmit} className="rounded-2xl border border-black/[0.07] bg-ink-800/60 p-6">
           <label className="block text-[12px] text-muted">
             账号
             <input
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              className="mt-1.5 w-full rounded-xl border border-white/10 bg-ink-900/70 px-3.5 py-2.5 text-[13px] text-mist focus:border-accent/60 focus:outline-none"
+              className="mt-1.5 w-full rounded-xl border border-black/10 bg-ink-900/70 px-3.5 py-2.5 text-[13px] text-mist focus:border-accent/60 focus:outline-none"
               autoComplete="username"
             />
           </label>
@@ -46,13 +46,13 @@ export default function AdminLogin() {
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="mt-1.5 w-full rounded-xl border border-white/10 bg-ink-900/70 px-3.5 py-2.5 text-[13px] text-mist focus:border-accent/60 focus:outline-none"
+              className="mt-1.5 w-full rounded-xl border border-black/10 bg-ink-900/70 px-3.5 py-2.5 text-[13px] text-mist focus:border-accent/60 focus:outline-none"
               autoComplete="current-password"
               placeholder="admin123"
             />
           </label>
 
-          {error ? <p className="mt-3 text-[12px] text-rose-300">{error}</p> : null}
+          {error ? <p className="mt-3 text-[12px] text-rose-600">{error}</p> : null}
 
           <button type="submit" className="btn-primary mt-6 w-full justify-center">
             登录
@@ -62,7 +62,7 @@ export default function AdminLogin() {
         </form>
 
         <p className="mt-5 text-center text-[12px]">
-          <Link to="/" className="text-muted hover:text-white">
+          <Link to="/" className="text-muted hover:text-[#111827]">
             ← 返回站点
           </Link>
         </p>

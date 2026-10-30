@@ -24,24 +24,24 @@ export default function BlogSection() {
           }
         />
 
-        <div className="mt-12 divide-y divide-white/[0.06] border-y border-white/[0.06]">
+        <div className="mt-12 divide-y divide-black/[0.06] border-y border-black/[0.06]">
           {latest.map((post, index) => (
             <Reveal key={post.slug} delay={index * 60}>
               <Link
                 to={`/blog/${post.slug}`}
-                className="group grid gap-3 py-6 transition-colors hover:bg-white/[0.02] sm:grid-cols-[124px_1fr_40px] sm:items-center sm:gap-6"
+                className="group grid gap-3 py-6 transition-colors hover:bg-black/[0.02] sm:grid-cols-[124px_1fr_40px] sm:items-center sm:gap-6"
               >
                 <span className="font-mono text-[12px] tracking-wide text-muted/80">
                   {shortDate(post.date)}
                 </span>
                 <div>
-                  <h3 className="text-[17px] font-medium text-white transition-colors group-hover:text-accent">
+                  <h3 className="text-[17px] font-medium text-[#111827] transition-colors group-hover:text-accent">
                     {post.title}
                   </h3>
                   <p className="mt-1.5 line-clamp-2 text-[13px] leading-6 text-muted">{post.summary}</p>
                   <div className="mt-2.5 flex flex-wrap items-center gap-2 text-[11px] text-muted/80">
                     {post.tags.map((tag) => (
-                      <span key={tag} className="rounded-full bg-white/[0.05] px-2 py-0.5">
+                      <span key={tag} className="rounded-full bg-black/[0.05] px-2 py-0.5">
                         {tag}
                       </span>
                     ))}

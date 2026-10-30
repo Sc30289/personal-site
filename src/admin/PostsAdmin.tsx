@@ -29,7 +29,7 @@ export default function PostsAdmin() {
       <div className="space-y-5">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold text-white">编辑文章</h1>
+            <h1 className="text-xl font-semibold text-[#111827]">编辑文章</h1>
             <p className="mt-1 text-[12px] text-muted">{post.title}</p>
           </div>
           <MiniButton onClick={() => setEditing(null)}>← 返回列表</MiniButton>
@@ -66,7 +66,7 @@ export default function PostsAdmin() {
           }
         >
           {preview ? (
-            <div className="rounded-xl border border-white/[0.06] p-4">
+            <div className="rounded-xl border border-black/[0.06] p-4">
               <Markdown content={post.content} />
             </div>
           ) : (
@@ -84,7 +84,7 @@ export default function PostsAdmin() {
     <div className="space-y-5">
       <div className="flex items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold text-white">博客管理</h1>
+          <h1 className="text-xl font-semibold text-[#111827]">博客管理</h1>
           <p className="mt-1 text-[12px] text-muted">共 {list.length} 篇文章</p>
         </div>
         <MiniButton
@@ -109,11 +109,11 @@ export default function PostsAdmin() {
       </div>
 
       <AdminCard>
-        <div className="divide-y divide-white/[0.06]">
+        <div className="divide-y divide-black/[0.06]">
           {list.map((post: any, index: number) => (
             <div key={post.slug + index} className="flex flex-wrap items-center gap-3 py-3">
               <div className="min-w-0 flex-1">
-                <p className="truncate text-[13px] text-white">{post.title}</p>
+                <p className="truncate text-[13px] text-[#111827]">{post.title}</p>
                 <p className="truncate text-[11px] text-muted">{post.slug} · {post.date} · {post.tags.join(' / ')}</p>
               </div>
               <MiniButton onClick={() => setEditing(index)}>编辑</MiniButton>

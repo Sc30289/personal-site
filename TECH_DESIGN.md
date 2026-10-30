@@ -62,7 +62,7 @@ personal-site/
 │   ├── store/
 │   │   └── siteData.tsx    # 站点数据 Context + localStorage 持久化
 │   ├── components/         # 可复用组件
-│   │   ├── StarField.tsx   # Canvas 星空
+│   │   ├── StarField.tsx   # Canvas 星空（浅色主题下未启用）
 │   │   ├── Navbar.tsx      # 吸顶导航 + 移动端菜单
 │   │   ├── Hero.tsx        # 首屏
 │   │   ├── About.tsx       # 关于 / 时间线
@@ -141,20 +141,13 @@ interface Post {
 
 ## 五、关键技术点
 
-### 5.1 星空背景的性能控制
+### 5.1 背景装饰与性能
 
-- 粒子数按面积计算：`min(220, max(36, w*h/11000))`
-- 帧率节流：帧间隔小于 24ms 时跳过绘制（≈ 40fps 上限，视觉无差异）
-- 页面不可见：`visibilitychange` 时 `cancelAnimationFrame`
-- 视差：滚动位移 × 深度系数，鼠标位移做线性插值，避免抖动
-- `prefers-reduced-motion`：只绘制一次静态星空
-- DPR 上限取 2，避免高分屏过度绘制
-
-```ts
-const dpr = Math.min(window.devicePixelRatio || 1, 2)
-canvas.width = width * dpr
-ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-```
+- 首页背景 = 径向渐变（琥珀 7%）+ 56px 细网格，纯 CSS，无图片请求
+- 网格用 `mask-image` 做径向淡出，避免边缘生硬
+- 移动端不做粒子动画；滚动与入场动画统一用 CSS `transform`，走合成层
+- `prefers-reduced-motion` 下关闭位移与过渡
+- `StarField.tsx`（Canvas 星空）保留在仓库中，切回深色主题时可直接启用
 
 ### 5.2 Markdown 管线
 
@@ -212,12 +205,12 @@ save({ profile: { ...data.profile, name: '豆杰晟' } })
 
 | Token | 值 | 用途 |
 | --- | --- | --- |
-| `ink-900` | `#0A1610` | 页面背景（墨绿黑） |
-| `ink-800` | `#102019` | 卡片背景 |
-| `mist` | `#E8F1E9` | 主文字 |
-| `muted` | `#96A99B` | 次要文字 |
-| `accent` | `#F59E0B` | 主强调色（琥珀） |
-| `accent-violet` | `#FB7185` | 渐变终点（珊瑚） |
+| `ink-900` | `#F6F7F9` | 页面背景（浅灰白） |
+| `ink-800` | `#FFFFFF` | 卡片背景 |
+| `mist` | `#1F2937` | 主文字 |
+| `muted` | `#5B6472` | 次要文字 |
+| `accent` | `#D97706` | 主强调色（琥珀） |
+| `accent-violet` | `#E11D48` | 渐变终点（玫红） |
 | 圆角 | 12–16px | 卡片 / 按钮 |
 | 间距 | 4px 基准 | 8 / 12 / 16 / 24 / 32 |
 
@@ -255,7 +248,7 @@ VITE_BASE=/personal-site/ npm run build
 | 风险 | 对策 |
 | --- | --- |
 | 子路径导致白屏 | 构建时统一注入 `VITE_BASE`，预览与线上分别验证 |
-| 星空在低端机掉帧 | 粒子数按面积裁剪 + 帧间隔节流 + 不可见暂停 |
+| 浅色背景对比度不足 | 统一使用设计 token，按 WCAG AA 校验 |
 | 文章增多后首屏变慢 | 当前 4 篇无压力；超过 20 篇时改为按需加载正文 |
 | Markdown 中出现危险 HTML | 不启用 `rehype-raw`，原始 HTML 按文本转义 |
 | 表单被当作真实后端 | 文案明确说明「会打开邮件客户端」，并提供邮箱复制 |

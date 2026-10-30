@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useSiteData } from '../store/siteData'
-import StarField from './StarField'
 import Icon from './Icon'
 import Reveal from './Reveal'
 
@@ -13,21 +12,24 @@ export default function Hero() {
       id="hero"
       className="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-20 pt-28 sm:pb-24 sm:pt-32"
     >
-      <StarField />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-fade" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -left-24 top-1/3 -z-10 h-72 w-72 rounded-full bg-accent/10 blur-[110px]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_72%)]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-16 top-20 -z-10 h-80 w-80 rounded-full bg-accent-violet/10 blur-[120px]"
+        className="pointer-events-none absolute -left-24 top-1/3 -z-10 h-72 w-72 rounded-full bg-accent/[0.07] blur-[110px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-16 top-20 -z-10 h-80 w-80 rounded-full bg-accent-violet/[0.05] blur-[120px]"
         aria-hidden="true"
       />
 
       <div className="container-page grid items-center gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10">
         <div>
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-3.5 py-1.5 text-xs font-medium text-emerald-300">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-600/25 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-medium text-emerald-700">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -37,7 +39,7 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="mt-7 text-4xl font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[64px]">
+            <h1 className="mt-7 text-4xl font-semibold leading-[1.12] tracking-tight text-[#111827] sm:text-5xl lg:text-[64px]">
               你好，我是 <span className="gradient-text">{profile.name}</span>
             </h1>
           </Reveal>
@@ -66,7 +68,7 @@ export default function Hero() {
               </Link>
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 px-2 py-2 text-sm text-muted transition-colors hover:text-white"
+                className="inline-flex items-center gap-2 px-2 py-2 text-sm text-muted transition-colors hover:text-[#111827]"
               >
                 <Icon name="mail" size={16} />
                 {profile.email}
@@ -97,21 +99,21 @@ export default function Hero() {
 
               <div className="mt-6 flex items-center gap-4">
                 <div className="relative h-16 w-16 shrink-0 rounded-2xl bg-gradient-to-br from-accent via-accent-violet to-accent-cyan p-[2px]">
-                  <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-ink-900 text-lg font-semibold tracking-wide text-white">
+                  <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-ink-900 text-lg font-semibold tracking-wide text-[#111827]">
                     {profile.initials}
                   </div>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-white">{profile.name}</p>
+                  <p className="text-base font-semibold text-[#111827]">{profile.name}</p>
                   <p className="mt-0.5 text-[13px] text-muted">{profile.role}</p>
                   <p className="mt-0.5 text-[11px] text-muted/70">{profile.school}</p>
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-4 gap-2 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+              <div className="mt-6 grid grid-cols-4 gap-2 rounded-xl border border-black/[0.06] bg-black/[0.02] p-3">
                 {profile.stats.map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <p className="text-lg font-semibold text-white">{stat.value}</p>
+                    <p className="text-lg font-semibold text-[#111827]">{stat.value}</p>
                     <p className="mt-0.5 text-[10px] text-muted">{stat.label}</p>
                   </div>
                 ))}
@@ -124,7 +126,7 @@ export default function Hero() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-muted">邮箱</span>
-                  <a href={`mailto:${profile.email}`} className="text-accent hover:text-amber-200">
+                  <a href={`mailto:${profile.email}`} className="text-accent hover:text-amber-700">
                     {profile.email}
                   </a>
                 </div>
@@ -134,7 +136,7 @@ export default function Hero() {
                     href={profile.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-accent hover:text-amber-200"
+                    className="inline-flex items-center gap-1 text-accent hover:text-amber-700"
                   >
                     @{profile.githubName}
                     <Icon name="arrow-up-right" size={12} />

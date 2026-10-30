@@ -18,7 +18,7 @@ export default function Skills() {
   return (
     <section id="skills" className="relative scroll-mt-24 py-24 sm:py-28">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"
         aria-hidden="true"
       />
       <div className="container-page">
@@ -37,7 +37,7 @@ export default function Skills() {
                     <Icon name={iconMap[group.icon]} size={19} />
                   </span>
                   <div>
-                    <h3 className="text-base font-semibold text-white">{group.title}</h3>
+                    <h3 className="text-base font-semibold text-[#111827]">{group.title}</h3>
                     <p className="mt-0.5 text-[12px] text-muted">{group.subtitle}</p>
                   </div>
                 </div>
@@ -49,7 +49,7 @@ export default function Skills() {
                         <span className="text-[13px] font-medium text-mist">{skill.name}</span>
                         <span className="font-mono text-[11px] text-muted/70">{skill.level}</span>
                       </div>
-                      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/[0.06]">
                         <div
                           className="skill-fill h-full rounded-full bg-gradient-to-r from-accent to-accent-violet"
                           style={{ width: `${skill.level}%` }}

@@ -80,14 +80,14 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="group mt-3 inline-flex items-center gap-3 text-left text-xl font-medium text-white transition-colors hover:text-accent sm:text-2xl"
+                  className="group mt-3 inline-flex items-center gap-3 text-left text-xl font-medium text-[#111827] transition-colors hover:text-accent sm:text-2xl"
                 >
                   {profile.email}
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-muted transition-colors group-hover:border-accent/40 group-hover:text-accent">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 text-muted transition-colors group-hover:border-accent/40 group-hover:text-accent">
                     <Icon name={copied ? 'check' : 'copy'} size={14} />
                   </span>
                 </button>
-                <p className={`mt-2 text-xs transition-opacity ${copied ? 'text-emerald-300' : 'text-transparent'}`}>
+                <p className={`mt-2 text-xs transition-opacity ${copied ? 'text-emerald-700' : 'text-transparent'}`}>
                   已复制到剪贴板
                 </p>
                 <p className="mt-4 max-w-xs text-[12.5px] leading-6 text-muted/80">
@@ -105,7 +105,7 @@ export default function Contact() {
                       href={profile.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="transition-colors hover:text-white"
+                      className="transition-colors hover:text-[#111827]"
                     >
                       github.com/{profile.githubName}
                     </a>
@@ -138,10 +138,10 @@ export default function Contact() {
                     onChange={(event) => update('name')(event.target.value)}
                     placeholder="怎么称呼你"
                     className={`mt-2 w-full rounded-xl border bg-ink-900/60 px-4 py-2.5 text-sm text-mist placeholder:text-muted/50 focus:border-accent/60 focus:outline-none ${
-                      errors.name ? 'border-rose-400/60' : 'border-white/10'
+                      errors.name ? 'border-rose-400/60' : 'border-black/10'
                     }`}
                   />
-                  {errors.name ? <span className="mt-1 block text-[11px] text-rose-300">{errors.name}</span> : null}
+                  {errors.name ? <span className="mt-1 block text-[11px] text-rose-600">{errors.name}</span> : null}
                 </label>
 
                 <label className="block">
@@ -152,11 +152,11 @@ export default function Contact() {
                     onChange={(event) => update('email')(event.target.value)}
                     placeholder="you@example.com"
                     className={`mt-2 w-full rounded-xl border bg-ink-900/60 px-4 py-2.5 text-sm text-mist placeholder:text-muted/50 focus:border-accent/60 focus:outline-none ${
-                      errors.email ? 'border-rose-400/60' : 'border-white/10'
+                      errors.email ? 'border-rose-400/60' : 'border-black/10'
                     }`}
                   />
                   {errors.email ? (
-                    <span className="mt-1 block text-[11px] text-rose-300">{errors.email}</span>
+                    <span className="mt-1 block text-[11px] text-rose-600">{errors.email}</span>
                   ) : null}
                 </label>
               </div>
@@ -169,11 +169,11 @@ export default function Contact() {
                   rows={5}
                   placeholder="简单介绍一下你的想法或需求…"
                   className={`mt-2 w-full resize-y rounded-xl border bg-ink-900/60 px-4 py-3 text-sm leading-6 text-mist placeholder:text-muted/50 focus:border-accent/60 focus:outline-none ${
-                    errors.message ? 'border-rose-400/60' : 'border-white/10'
+                    errors.message ? 'border-rose-400/60' : 'border-black/10'
                   }`}
                 />
                 {errors.message ? (
-                  <span className="mt-1 block text-[11px] text-rose-300">{errors.message}</span>
+                  <span className="mt-1 block text-[11px] text-rose-600">{errors.message}</span>
                 ) : null}
               </label>
 
@@ -188,7 +188,7 @@ export default function Contact() {
               </div>
 
               {sent ? (
-                <p className="mt-4 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.06] px-4 py-3 text-[13px] text-emerald-200">
+                <p className="mt-4 rounded-xl border border-emerald-600/25 bg-emerald-400/[0.06] px-4 py-3 text-[13px] text-emerald-700">
                   已为你打开邮件客户端。如果没有反应，也可以直接复制上面的邮箱发信。
                 </p>
               ) : null}

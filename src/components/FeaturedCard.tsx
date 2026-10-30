@@ -30,7 +30,7 @@ export default function FeaturedCard({ project, index }: FeaturedCardProps) {
           mark={project.cover.mark}
           className="h-52 w-full transition-transform duration-500 group-hover:scale-[1.03]"
         />
-        <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-ink-950/70 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
+        <span className="absolute left-4 top-4 rounded-full border border-black/15 bg-black/60 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
           精选 0{index + 1}
         </span>
       </div>
@@ -40,13 +40,13 @@ export default function FeaturedCard({ project, index }: FeaturedCardProps) {
           <span className="font-mono">{project.year}</span>
           <span className="h-1 w-1 rounded-full bg-muted/50" />
           {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-white/[0.05] px-2 py-0.5">
+            <span key={tag} className="rounded-full bg-black/[0.05] px-2 py-0.5">
               {tag}
             </span>
           ))}
         </div>
 
-        <h3 className="mt-3 text-xl font-semibold leading-7 text-white transition-colors group-hover:text-accent">
+        <h3 className="mt-3 text-xl font-semibold leading-7 text-[#111827] transition-colors group-hover:text-accent">
           {project.title}
         </h3>
         <p className="mt-2 line-clamp-3 text-[13px] leading-6 text-muted">{project.summary}</p>
@@ -61,7 +61,7 @@ export default function FeaturedCard({ project, index }: FeaturedCardProps) {
               href={demo.href}
               target="_blank"
               rel="noreferrer"
-              className="relative z-20 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[12px] text-mist transition-colors hover:border-accent/40 hover:text-white"
+              className="relative z-20 inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1.5 text-[12px] text-mist transition-colors hover:border-accent/40 hover:text-[#111827]"
             >
               <Icon name={linkIcon[demo.kind]} size={13} />
               {demo.label}

@@ -38,7 +38,7 @@ export default function SkillsAdmin() {
     <div className="space-y-5">
       <div className="flex items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold text-white">技能管理</h1>
+          <h1 className="text-xl font-semibold text-[#111827]">技能管理</h1>
           <p className="mt-1 text-[12px] text-muted">按方向分组，熟练度 0–100</p>
         </div>
         <MiniButton
@@ -80,7 +80,7 @@ export default function SkillsAdmin() {
 
           <div className="mt-4 space-y-3">
             {group.skills.map((skill: any, si: number) => (
-              <div key={si} className="grid items-end gap-2 rounded-xl border border-white/[0.06] p-3 sm:grid-cols-[1fr_90px_1.4fr_auto]">
+              <div key={si} className="grid items-end gap-2 rounded-xl border border-black/[0.06] p-3 sm:grid-cols-[1fr_90px_1.4fr_auto]">
                 <Field label="名称">
                   <TextInput value={skill.name} onChange={(e) => updateSkill(gi, si, { name: e.target.value })} />
                 </Field>
@@ -103,7 +103,7 @@ export default function SkillsAdmin() {
                     next[gi].skills = next[gi].skills.filter((_: unknown, i: number) => i !== si)
                     setDraft(next)
                   }}
-                  className="pb-2 text-[11px] text-rose-300 hover:text-rose-200"
+                  className="pb-2 text-[11px] text-rose-600 hover:text-rose-700"
                 >
                   删除
                 </button>

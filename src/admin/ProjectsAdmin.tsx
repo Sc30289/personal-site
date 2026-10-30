@@ -36,7 +36,7 @@ export default function ProjectsAdmin() {
       <div className="space-y-5">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold text-white">编辑作品</h1>
+            <h1 className="text-xl font-semibold text-[#111827]">编辑作品</h1>
             <p className="mt-1 text-[12px] text-muted">{project.title}</p>
           </div>
           <MiniButton onClick={() => setEditing(null)}>← 返回列表</MiniButton>
@@ -149,7 +149,7 @@ export default function ProjectsAdmin() {
     <div className="space-y-5">
       <div className="flex items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold text-white">项目管理</h1>
+          <h1 className="text-xl font-semibold text-[#111827]">项目管理</h1>
           <p className="mt-1 text-[12px] text-muted">共 {list.length} 个作品</p>
         </div>
         <MiniButton
@@ -179,12 +179,12 @@ export default function ProjectsAdmin() {
       </div>
 
       <AdminCard>
-        <div className="divide-y divide-white/[0.06]">
+        <div className="divide-y divide-black/[0.06]">
           {list.map((project: any, index: number) => (
             <div key={project.slug + index} className="flex flex-wrap items-center gap-3 py-3">
               <span className="h-9 w-12 rounded-md" style={{ backgroundImage: `linear-gradient(135deg, ${project.cover.from}, ${project.cover.to})` }} />
               <div className="min-w-0 flex-1">
-                <p className="truncate text-[13px] text-white">{project.title}</p>
+                <p className="truncate text-[13px] text-[#111827]">{project.title}</p>
                 <p className="truncate text-[11px] text-muted">/{project.slug} · {project.category}</p>
               </div>
               {project.featured ? <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[10px] text-accent">精选</span> : null}

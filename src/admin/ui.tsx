@@ -12,11 +12,11 @@ export function AdminCard({
   children: ReactNode
 }) {
   return (
-    <section className="rounded-2xl border border-white/[0.07] bg-ink-800/60 p-6 shadow-card">
+    <section className="rounded-2xl border border-black/[0.07] bg-ink-800/60 p-6 shadow-card">
       {title ? (
         <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
           <div>
-            <h2 className="text-[15px] font-semibold text-white">{title}</h2>
+            <h2 className="text-[15px] font-semibold text-[#111827]">{title}</h2>
             {desc ? <p className="mt-1 text-[12px] text-muted">{desc}</p> : null}
           </div>
           {actions}
@@ -53,7 +53,7 @@ export function Field({
 }
 
 const inputClass =
-  'w-full rounded-xl border border-white/10 bg-ink-900/70 px-3.5 py-2.5 text-[13px] text-mist placeholder:text-muted/40 transition-colors focus:border-accent/60 focus:outline-none'
+  'w-full rounded-xl border border-black/10 bg-ink-900/70 px-3.5 py-2.5 text-[13px] text-mist placeholder:text-muted/40 transition-colors focus:border-accent/60 focus:outline-none'
 
 export function TextInput(props: InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={`${inputClass} ${props.className ?? ''}`} />
@@ -69,7 +69,7 @@ export function Select(props: SelectHTMLAttributes<HTMLSelectElement>) {
 
 export function SaveBar({ onSave, saving, extra }: { onSave: () => void; saving?: boolean; extra?: ReactNode }) {
   return (
-    <div className="sticky bottom-0 z-10 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/[0.07] bg-ink-900/90 p-4 backdrop-blur">
+    <div className="sticky bottom-0 z-10 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-black/[0.07] bg-ink-900/90 p-4 backdrop-blur">
       <p className="text-[11px] text-muted/70">数据保存在本地浏览器（localStorage），公开站点会读取同一份数据。</p>
       <div className="flex items-center gap-2">
         {extra}
@@ -89,7 +89,7 @@ export function SaveBar({ onSave, saving, extra }: { onSave: () => void; saving?
 export function Toast({ message }: { message: string }) {
   return (
     <div
-      className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-emerald-400/30 bg-emerald-400/15 px-5 py-2 text-[12px] text-emerald-200 backdrop-blur transition-all ${
+      className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-emerald-600/30 bg-emerald-500/10 px-5 py-2 text-[12px] text-emerald-700 backdrop-blur transition-all ${
         message ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
       role="status"
@@ -111,8 +111,8 @@ export function MiniButton({
   type?: 'button' | 'submit'
 }) {
   const styles = {
-    ghost: 'border border-white/10 text-muted hover:text-white hover:border-accent/40',
-    danger: 'border border-rose-400/30 text-rose-300 hover:bg-rose-400/10',
+    ghost: 'border border-black/10 text-muted hover:text-[#111827] hover:border-accent/40',
+    danger: 'border border-rose-400/30 text-rose-600 hover:bg-rose-400/10',
     primary: 'bg-accent/15 text-accent border border-accent/30 hover:bg-accent/25',
   }[variant]
   return (

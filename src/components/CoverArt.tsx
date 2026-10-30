@@ -95,7 +95,7 @@ export default function CoverArt({ from, to, pattern, mark, className = '' }: Co
         <rect width="640" height="400" fill={`url(#fade-${id})`} />
       </svg>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
       <span className="absolute bottom-4 left-5 font-mono text-4xl font-semibold tracking-tight text-white/90 drop-shadow">
         {mark}

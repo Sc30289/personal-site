@@ -49,7 +49,7 @@ export default function BlogList() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="搜索标题、摘要或标签"
-              className="w-full rounded-full border border-white/10 bg-white/[0.03] py-2.5 pl-11 pr-4 text-sm text-mist placeholder:text-muted/60 focus:border-accent/50 focus:outline-none"
+              className="w-full rounded-full border border-black/10 bg-black/[0.03] py-2.5 pl-11 pr-4 text-sm text-mist placeholder:text-muted/60 focus:border-accent/50 focus:outline-none"
             />
           </label>
           <div className="flex flex-wrap gap-2">
@@ -61,8 +61,8 @@ export default function BlogList() {
                 aria-pressed={tag === item}
                 className={`rounded-full px-3.5 py-1.5 text-[12px] transition-all ${
                   tag === item
-                    ? 'bg-accent text-ink-950'
-                    : 'border border-white/10 text-muted hover:text-white'
+                    ? 'bg-accent text-[#201509]'
+                    : 'border border-black/10 text-muted hover:text-[#111827]'
                 }`}
               >
                 {item}
@@ -96,13 +96,13 @@ export default function BlogList() {
                     {post.readingTime} 分钟
                   </span>
                 </div>
-                <h2 className="mt-3 text-lg font-semibold leading-7 text-white transition-colors group-hover:text-accent">
+                <h2 className="mt-3 text-lg font-semibold leading-7 text-[#111827] transition-colors group-hover:text-accent">
                   {post.title}
                 </h2>
                 <p className="mt-2 line-clamp-3 text-[13px] leading-6 text-muted">{post.summary}</p>
                 <div className="mt-auto flex flex-wrap items-center gap-2 pt-5 text-[11px] text-muted/80">
                   {post.tags.map((item) => (
-                    <span key={item} className="rounded-full bg-white/[0.05] px-2 py-0.5">
+                    <span key={item} className="rounded-full bg-black/[0.05] px-2 py-0.5">
                       {item}
                     </span>
                   ))}

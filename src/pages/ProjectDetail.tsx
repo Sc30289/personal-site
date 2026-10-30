@@ -26,7 +26,7 @@ export default function ProjectDetail() {
       <div className="container-page pt-28 sm:pt-32">
         <Link
           to="/projects"
-          className="inline-flex items-center gap-1.5 text-[13px] text-muted transition-colors hover:text-white"
+          className="inline-flex items-center gap-1.5 text-[13px] text-muted transition-colors hover:text-[#111827]"
         >
           <Icon name="arrow-left" size={15} />
           全部项目
@@ -36,13 +36,13 @@ export default function ProjectDetail() {
           <span className="font-mono">{project.year}</span>
           <span className="h-1 w-1 rounded-full bg-muted/50" />
           {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-white/[0.05] px-2.5 py-1">
+            <span key={tag} className="rounded-full bg-black/[0.05] px-2.5 py-1">
               {tag}
             </span>
           ))}
         </div>
 
-        <h1 className="mt-5 max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        <h1 className="mt-5 max-w-3xl text-4xl font-semibold tracking-tight text-[#111827] sm:text-5xl">
           {project.title}
         </h1>
         <p className="mt-4 max-w-2xl text-[15px] leading-7 text-muted">{project.subtitle}</p>
@@ -68,7 +68,7 @@ export default function ProjectDetail() {
           to={project.cover.to}
           pattern={project.cover.pattern}
           mark={project.cover.mark}
-          className="mt-10 h-44 w-full rounded-2xl border border-white/[0.08] sm:h-56"
+          className="mt-10 h-44 w-full rounded-2xl border border-black/[0.08] sm:h-56"
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px]">
@@ -78,7 +78,7 @@ export default function ProjectDetail() {
 
           <aside className="space-y-5 lg:sticky lg:top-28 lg:self-start">
             <div className="card p-6">
-              <h2 className="text-sm font-medium text-white">项目亮点</h2>
+              <h2 className="text-sm font-medium text-[#111827]">项目亮点</h2>
               <ul className="mt-4 space-y-3">
                 {project.highlights.map((item) => (
                   <li key={item} className="flex gap-2.5 text-[12.5px] leading-6 text-muted">
@@ -90,11 +90,11 @@ export default function ProjectDetail() {
             </div>
 
             <div className="card p-6">
-              <h2 className="text-sm font-medium text-white">联系方式</h2>
+              <h2 className="text-sm font-medium text-[#111827]">联系方式</h2>
               <p className="mt-3 text-[12.5px] leading-6 text-muted">
                 对这个项目有疑问，或者想聊类似的东西？欢迎直接发邮件。
               </p>
-              <a href={`mailto:${profile.email}`} className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-accent hover:text-amber-200">
+              <a href={`mailto:${profile.email}`} className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-accent hover:text-amber-700">
                 <Icon name="mail" size={14} />
                 {profile.email}
               </a>
@@ -102,15 +102,15 @@ export default function ProjectDetail() {
           </aside>
         </div>
 
-        <div className="mt-16 border-t border-white/[0.06] pt-8">
+        <div className="mt-16 border-t border-black/[0.06] pt-8">
           <Link to={`/projects/${next.slug}`} className="group flex items-center justify-between gap-6">
             <div>
               <p className="text-[11px] uppercase tracking-[0.25em] text-muted/60">下一个项目</p>
-              <p className="mt-2 text-lg font-medium text-white transition-colors group-hover:text-accent">
+              <p className="mt-2 text-lg font-medium text-[#111827] transition-colors group-hover:text-accent">
                 {next.title}
               </p>
             </div>
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-muted transition-all group-hover:border-accent/40 group-hover:text-accent">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-muted transition-all group-hover:border-accent/40 group-hover:text-accent">
               <Icon name="arrow-right" size={18} />
             </span>
           </Link>

@@ -32,13 +32,13 @@ export default function ProjectCard({ project }: { project: Project }) {
           <span className="font-mono">{project.year}</span>
           <span className="h-1 w-1 rounded-full bg-muted/50" />
           {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-white/[0.05] px-2 py-0.5">
+            <span key={tag} className="rounded-full bg-black/[0.05] px-2 py-0.5">
               {tag}
             </span>
           ))}
         </div>
 
-        <h3 className="mt-3 text-lg font-semibold text-white transition-colors group-hover:text-accent">
+        <h3 className="mt-3 text-lg font-semibold text-[#111827] transition-colors group-hover:text-accent">
           {project.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-[13px] leading-6 text-muted">{project.summary}</p>
@@ -57,7 +57,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 rel="noreferrer"
                 aria-label={`${project.title}：${link.label}`}
                 title={link.label}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-white/[0.06] hover:text-white"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-black/[0.06] hover:text-[#111827]"
               >
                 <Icon name={linkIcon[link.kind]} size={15} />
               </a>

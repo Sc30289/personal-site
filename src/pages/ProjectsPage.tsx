@@ -33,8 +33,8 @@ export default function ProjectsPage() {
               aria-pressed={filter === category.key}
               className={`rounded-full px-4 py-1.5 text-[13px] transition-all ${
                 filter === category.key
-                  ? 'bg-accent text-ink-950'
-                  : 'border border-white/10 bg-white/[0.03] text-muted hover:text-white'
+                  ? 'bg-accent text-[#201509]'
+                  : 'border border-black/10 bg-black/[0.03] text-muted hover:text-[#111827]'
               }`}
             >
               {category.label}

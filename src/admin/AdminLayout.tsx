@@ -45,13 +45,13 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-ink-950 text-mist">
       <div className="flex">
-        <aside className="sticky top-0 hidden h-screen w-56 shrink-0 flex-col border-r border-white/[0.06] bg-ink-900/80 p-4 md:flex">
+        <aside className="sticky top-0 hidden h-screen w-56 shrink-0 flex-col border-r border-black/[0.06] bg-ink-900/80 p-4 md:flex">
           <Link to="/" className="flex items-center gap-2 px-2 py-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-accent-violet text-sm font-semibold text-ink-950">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-accent-violet text-sm font-semibold text-[#201509]">
               豆
             </span>
             <div>
-              <p className="text-[13px] font-medium text-white">管理后台</p>
+              <p className="text-[13px] font-medium text-[#111827]">管理后台</p>
               <p className="text-[10px] text-muted/60">localStorage 模式</p>
             </div>
           </Link>
@@ -66,7 +66,7 @@ export default function AdminLayout() {
                   `flex items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] transition-colors ${
                     isActive
                       ? 'bg-accent/12 text-accent'
-                      : 'text-muted hover:bg-white/[0.04] hover:text-white'
+                      : 'text-muted hover:bg-black/[0.04] hover:text-[#111827]'
                   }`
                 }
               >
@@ -76,15 +76,15 @@ export default function AdminLayout() {
             ))}
           </nav>
 
-          <div className="mt-auto space-y-2 border-t border-white/[0.06] pt-4 text-[12px]">
-            <Link to="/" className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted hover:text-white">
+          <div className="mt-auto space-y-2 border-t border-black/[0.06] pt-4 text-[12px]">
+            <Link to="/" className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted hover:text-[#111827]">
               <Icon name="external" size={14} />
               查看站点
             </Link>
             <button
               type="button"
               onClick={handleLogout}
-              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-muted hover:text-white"
+              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-muted hover:text-[#111827]"
             >
               <Icon name="arrow-left" size={14} />
               退出登录
@@ -93,27 +93,27 @@ export default function AdminLayout() {
         </aside>
 
         <div className="min-w-0 flex-1">
-          <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-white/[0.06] bg-ink-900/85 px-6 backdrop-blur">
+          <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-black/[0.06] bg-ink-900/85 px-6 backdrop-blur">
             <div className="flex items-center gap-2 text-[12px] text-muted">
               <span>内容管理</span>
               <span className="text-muted/40">/</span>
-              <span className="text-white">{current}</span>
+              <span className="text-[#111827]">{current}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Link to="/" className="hidden text-[12px] text-muted hover:text-white sm:inline">
+              <Link to="/" className="hidden text-[12px] text-muted hover:text-[#111827] sm:inline">
                 查看站点 ↗
               </Link>
               <button
                 type="button"
                 onClick={handleLogout}
-                className="rounded-full border border-white/10 px-3 py-1.5 text-[12px] text-muted hover:text-white md:hidden"
+                className="rounded-full border border-black/10 px-3 py-1.5 text-[12px] text-muted hover:text-[#111827] md:hidden"
               >
                 退出
               </button>
             </div>
           </header>
 
-          <nav className="flex gap-1 overflow-x-auto border-b border-white/[0.06] px-4 py-2 md:hidden">
+          <nav className="flex gap-1 overflow-x-auto border-b border-black/[0.06] px-4 py-2 md:hidden">
             {nav.map((item) => (
               <NavLink
                 key={item.to}

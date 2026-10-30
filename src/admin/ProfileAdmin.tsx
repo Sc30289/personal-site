@@ -31,7 +31,7 @@ export default function ProfileAdmin() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold text-white">个人信息</h1>
+        <h1 className="text-xl font-semibold text-[#111827]">个人信息</h1>
         <p className="mt-1 text-[12px] text-muted">管理个人资料、经历与教育背景</p>
       </div>
 
@@ -118,7 +118,7 @@ export default function ProfileAdmin() {
               <button
                 type="button"
                 onClick={() => update({ stats: draft.stats.filter((_: unknown, i: number) => i !== index) })}
-                className="mb-2 text-[11px] text-rose-300 hover:text-rose-200"
+                className="mb-2 text-[11px] text-rose-600 hover:text-rose-700"
               >
                 删除
               </button>
@@ -134,7 +134,7 @@ export default function ProfileAdmin() {
       >
         <div className="space-y-4">
           {draft.timeline.map((item: { period: string; title: string; desc: string }, index: number) => (
-            <div key={index} className="rounded-xl border border-white/[0.06] p-4">
+            <div key={index} className="rounded-xl border border-black/[0.06] p-4">
               <div className="grid gap-3 sm:grid-cols-[120px_1fr_auto]">
                 <Field label="时间">
                   <TextInput
@@ -159,7 +159,7 @@ export default function ProfileAdmin() {
                 <button
                   type="button"
                   onClick={() => update({ timeline: draft.timeline.filter((_: unknown, i: number) => i !== index) })}
-                  className="self-end pb-2 text-[11px] text-rose-300 hover:text-rose-200"
+                  className="self-end pb-2 text-[11px] text-rose-600 hover:text-rose-700"
                 >
                   删除
                 </button>

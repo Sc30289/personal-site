@@ -30,7 +30,7 @@ export default function About() {
               {profile.principles.map((item, index) => (
                 <Reveal key={item.title} delay={index * 60}>
                   <div className="card h-full p-5">
-                    <div className="flex items-center gap-2 text-sm font-medium text-white">
+                    <div className="flex items-center gap-2 text-sm font-medium text-[#111827]">
                       <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-accent/10 text-accent">
                         <Icon name="sparkles" size={14} />
                       </span>
@@ -46,16 +46,16 @@ export default function About() {
           <div className="space-y-6">
             <Reveal delay={80}>
               <div className="card p-6">
-                <h3 className="flex items-center gap-2 text-sm font-medium text-white">
+                <h3 className="flex items-center gap-2 text-sm font-medium text-[#111827]">
                   <Icon name="briefcase" size={16} className="text-accent" />
                   时间线
                 </h3>
-                <ol className="relative mt-6 space-y-6 border-l border-white/10 pl-6">
+                <ol className="relative mt-6 space-y-6 border-l border-black/10 pl-6">
                   {profile.timeline.map((item) => (
                     <li key={item.period} className="relative">
                       <span className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-accent/15" />
                       <p className="font-mono text-[11px] tracking-wider text-accent/90">{item.period}</p>
-                      <p className="mt-1 text-sm font-medium text-white">{item.title}</p>
+                      <p className="mt-1 text-sm font-medium text-[#111827]">{item.title}</p>
                       <p className="mt-1 text-[13px] leading-6 text-muted">{item.desc}</p>
                     </li>
                   ))}
@@ -65,7 +65,7 @@ export default function About() {
 
             <Reveal delay={140}>
               <div className="card p-6">
-                <h3 className="text-sm font-medium text-white">快速了解</h3>
+                <h3 className="text-sm font-medium text-[#111827]">快速了解</h3>
                 <dl className="mt-4 space-y-3 text-[13px]">
                   <div className="flex items-center justify-between gap-4">
                     <dt className="inline-flex items-center gap-2 text-muted">
@@ -87,7 +87,7 @@ export default function About() {
                       邮箱
                     </dt>
                     <dd>
-                      <a href={`mailto:${profile.email}`} className="text-accent hover:text-amber-200">
+                      <a href={`mailto:${profile.email}`} className="text-accent hover:text-amber-700">
                         {profile.email}
                       </a>
                     </dd>
@@ -102,7 +102,7 @@ export default function About() {
                         href={profile.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-accent hover:text-amber-200"
+                        className="text-accent hover:text-amber-700"
                       >
                         @{profile.githubName}
                       </a>

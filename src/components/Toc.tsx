@@ -29,7 +29,7 @@ export default function Toc({ items }: { items: TocItem[] }) {
   return (
     <nav aria-label="文章目录" className="sticky top-28 hidden max-h-[70vh] overflow-auto lg:block">
       <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted/60">目录</p>
-      <ul className="mt-4 space-y-1 border-l border-white/10">
+      <ul className="mt-4 space-y-1 border-l border-black/10">
         {items.map((item) => (
           <li key={item.id}>
             <a
@@ -43,7 +43,7 @@ export default function Toc({ items }: { items: TocItem[] }) {
               } ${
                 active === item.id
                   ? 'border-accent text-accent'
-                  : 'border-transparent text-muted hover:border-white/20 hover:text-white'
+                  : 'border-transparent text-muted hover:border-black/20 hover:text-[#111827]'
               }`}
             >
               {item.text}

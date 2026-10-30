@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
@@ -19,8 +19,8 @@
   }
 
   ::selection {
-    background: rgba(245, 158, 11, 0.28);
-    color: #fff8ed;
+    background: rgba(217, 119, 6, 0.22);
+    color: #111827;
   }
 
   /* 滚动条 */
@@ -29,19 +29,19 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a1610;
+    background: #f6f7f9;
   }
   ::-webkit-scrollbar-thumb {
-    background: #21402f;
+    background: #d3d8df;
     border-radius: 999px;
-    border: 2px solid #0a1610;
+    border: 2px solid #f6f7f9;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #2e5640;
+    background: #b9c0ca;
   }
 
   :focus-visible {
-    outline: 2px solid #f59e0b;
+    outline: 2px solid #b45309;
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -66,15 +66,15 @@
   }
 
   .glass {
-    background: rgba(10, 22, 16, 0.66);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border-bottom: 1px solid rgba(168, 196, 178, 0.12);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.07);
   }
 
   .card {
-    @apply rounded-2xl border border-white/[0.07] bg-ink-800/70;
-    box-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.9);
+    @apply rounded-2xl border border-black/[0.06] bg-white/80;
+    box-shadow: 0 22px 50px -38px rgba(15, 23, 42, 0.35);
   }
 
   .btn {
@@ -82,10 +82,10 @@
   }
 
   .btn-primary {
-    @apply btn text-ink-950;
-    background-image: linear-gradient(120deg, #f59e0b, #fb7185 55%, #fbbf24);
+    @apply btn text-[#201509];
+    background-image: linear-gradient(120deg, #f59e0b, #e11d48 55%, #fbbf24);
     background-size: 200% 100%;
-    box-shadow: 0 10px 30px -12px rgba(245, 158, 11, 0.7);
+    box-shadow: 0 10px 26px -14px rgba(217, 119, 6, 0.55);
   }
 
   .btn-primary:hover {
@@ -94,39 +94,39 @@
   }
 
   .btn-ghost {
-    @apply btn border border-white/10 bg-white/[0.03] text-mist;
+    @apply btn border border-black/10 bg-black/[0.03] text-mist;
   }
 
   .btn-ghost:hover {
-    @apply border-accent/40 bg-white/[0.06] text-white;
+    @apply border-accent/40 bg-black/[0.05] text-[#111827];
     transform: translateY(-1px);
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-muted;
+    @apply inline-flex items-center rounded-full border border-black/10 bg-black/[0.03] px-3 py-1 text-xs font-medium text-muted;
   }
 
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.35em] text-accent/80;
+    @apply font-mono text-xs uppercase tracking-[0.35em] text-accent/90;
   }
 
   .section-title {
-    @apply mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl;
+    @apply mt-3 text-3xl font-semibold tracking-tight text-[#111827] sm:text-4xl;
   }
 
   .gradient-text {
-    background-image: linear-gradient(100deg, #fbbf24, #fb7185 45%, #fde68a);
+    background-image: linear-gradient(100deg, #d97706, #e11d48 45%, #b45309);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .link-arrow {
-    @apply inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-amber-200;
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-[#92400e];
   }
 
   .divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent;
   }
 
   /* 入场动画 */
@@ -161,21 +161,21 @@
 /* Markdown 正文：prose 覆盖 + 代码高亮                                 */
 /* ------------------------------------------------------------------ */
 .prose-site {
-  --tw-prose-body: #d7e3d9;
-  --tw-prose-headings: #f1f7f2;
-  --tw-prose-links: #fbbf24;
-  --tw-prose-bold: #ffffff;
-  --tw-prose-counters: #fb7185;
-  --tw-prose-bullets: #f59e0b;
-  --tw-prose-hr: rgba(168, 196, 178, 0.18);
-  --tw-prose-quotes: #e3ede5;
-  --tw-prose-quote-borders: #f59e0b;
-  --tw-prose-captions: #96a99b;
-  --tw-prose-code: #f1f7f2;
-  --tw-prose-pre-code: #e0eae2;
-  --tw-prose-pre-bg: #050c08;
-  --tw-prose-th-borders: rgba(168, 196, 178, 0.25);
-  --tw-prose-td-borders: rgba(168, 196, 178, 0.12);
+  --tw-prose-body: #374151;
+  --tw-prose-headings: #111827;
+  --tw-prose-links: #b45309;
+  --tw-prose-bold: #111827;
+  --tw-prose-counters: #e11d48;
+  --tw-prose-bullets: #d97706;
+  --tw-prose-hr: rgba(15, 23, 42, 0.12);
+  --tw-prose-quotes: #374151;
+  --tw-prose-quote-borders: #d97706;
+  --tw-prose-captions: #6b7280;
+  --tw-prose-code: #b45309;
+  --tw-prose-pre-code: #e2e8f0;
+  --tw-prose-pre-bg: #0f172a;
+  --tw-prose-th-borders: rgba(15, 23, 42, 0.15);
+  --tw-prose-td-borders: rgba(15, 23, 42, 0.08);
   font-size: 1.02rem;
   line-height: 1.9;
 }
@@ -191,17 +191,17 @@
 }
 
 .prose-site a {
-  text-decoration-color: rgba(245, 158, 11, 0.35);
+  text-decoration-color: rgba(217, 119, 6, 0.35);
   text-underline-offset: 3px;
 }
 
 .prose-site a:hover {
-  color: #fde68a;
+  color: #92400e;
 }
 
 .prose-site :not(pre) > code {
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.16);
+  background: rgba(217, 119, 6, 0.09);
+  border: 1px solid rgba(217, 119, 6, 0.18);
   border-radius: 6px;
   padding: 0.15em 0.4em;
   font-weight: 500;
@@ -214,11 +214,11 @@
 }
 
 .prose-site pre {
-  border: 1px solid rgba(214, 194, 168, 0.14);
+  border: 1px solid rgba(15, 23, 42, 0.16);
   border-radius: 14px;
   padding: 1.15rem 1.25rem;
   overflow-x: auto;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .prose-site pre code {
@@ -233,14 +233,14 @@
 .prose-site blockquote {
   border-left-width: 3px;
   border-radius: 0 12px 12px 0;
-  background: rgba(245, 158, 11, 0.06);
+  background: rgba(217, 119, 6, 0.06);
   padding: 0.35rem 1.1rem;
   font-style: normal;
 }
 
 .prose-site img {
   border-radius: 14px;
-  border: 1px solid rgba(214, 194, 168, 0.14);
+  border: 1px solid rgba(15, 23, 42, 0.1);
 }
 
 .prose-site table {
@@ -248,16 +248,16 @@
 }
 
 .prose-site th {
-  background: rgba(168, 196, 178, 0.06);
+  background: rgba(15, 23, 42, 0.03);
 }
 
-/* highlight.js：Night Owl 风格配色 */
+/* highlight.js：深色代码块（Night Owl 配色） */
 .hljs {
   color: #d6deeb;
 }
 .hljs-comment,
 .hljs-quote {
-  color: #637777;
+  color: #7d8c8c;
   font-style: italic;
 }
 .hljs-keyword,

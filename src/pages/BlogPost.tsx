@@ -3,18 +3,21 @@ import Icon from '../components/Icon'
 import Markdown from '../components/Markdown'
 import Toc from '../components/Toc'
 import NotFound from './NotFound'
-import { getAdjacent, getPost } from '../content/posts'
+import { useSiteData } from '../store/siteData'
 import { formatDate } from '../lib/markdown'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
-  const post = slug ? getPost(slug) : undefined
+  const { posts } = useSiteData()
+  const index = posts.findIndex((item) => item.slug === slug)
+  const post = index >= 0 ? posts[index] : undefined
   useDocumentTitle(post ? post.title : '文章未找到')
 
   if (!post) return <NotFound />
 
-  const { prev, next } = getAdjacent(post.slug)
+  const prev = index > 0 ? posts[index - 1] : undefined
+  const next = index < posts.length - 1 ? posts[index + 1] : undefined
 
   return (
     <main id="main" className="pb-24">

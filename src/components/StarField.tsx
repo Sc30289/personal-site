@@ -42,7 +42,7 @@ export default function StarField() {
     let pointerY = 0
     let pointerYTarget = 0
 
-    const palette = ['#ffffff', '#bae6fd', '#c7d2fe', '#a5f3fc']
+    const palette = ['#ffffff', '#fde68a', '#fdba74', '#fcd34d']
 
     const build = () => {
       const count = Math.round((width * height) / 11000)

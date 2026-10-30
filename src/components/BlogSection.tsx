@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
-import { posts } from '../content/posts'
+import { useSiteData } from '../store/siteData'
 import { shortDate } from '../lib/markdown'
 import Icon from './Icon'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
 
 export default function BlogSection() {
+  const { posts } = useSiteData()
   const latest = posts.slice(0, 3)
 
   return (

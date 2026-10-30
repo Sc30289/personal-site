@@ -15,7 +15,14 @@
 | 项目 | 分类筛选、项目详情（Markdown 正文、亮点清单、上一个/下一个） |
 | 博客 | 搜索 + 标签筛选、文章页目录（TOC）滚动高亮、阅读时长、上一篇/下一篇 |
 | 联系 | 邮箱一键复制、表单校验、`mailto:` 唤起邮件客户端 |
+| 管理后台 | `/admin` 登录后管理个人信息、技能、项目、博客与站点设置（localStorage 数据层） |
 | 全局 | 吸顶毛玻璃导航、滚动进度条、返回顶部、404 页面、移动端菜单 |
+
+## 管理后台
+
+- 入口：<https://sc30289.github.io/personal-site/#/admin/login>
+- 演示账号：`admin` ／ 密码：`admin123`
+- 数据保存在浏览器 `localStorage`，公开页面读取同一份数据；可在「站点设置」导出 / 导入 JSON 或恢复默认
 
 ## 技术栈
 
@@ -23,6 +30,7 @@
 - Tailwind CSS 3（自定义设计 token）
 - React Router 6（Hash 模式，适配 GitHub Pages 子路径）
 - react-markdown + remark-gfm + rehype-highlight（博客 Markdown）
+- 管理后台：React Router 路由守卫 + localStorage 数据层
 - 无后端、无数据库、无第三方统计
 
 ## 本地开发

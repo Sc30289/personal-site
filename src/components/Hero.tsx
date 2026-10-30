@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
-import { profile } from '../content/profile'
+import { useSiteData } from '../store/siteData'
 import StarField from './StarField'
 import Icon from './Icon'
 import Reveal from './Reveal'
 
 export default function Hero() {
+  const { data } = useSiteData()
+  const profile = data.profile
+
   return (
     <section
       id="hero"
@@ -121,7 +124,7 @@ export default function Hero() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-muted">邮箱</span>
-                  <a href={`mailto:${profile.email}`} className="text-accent hover:text-cyan-300">
+                  <a href={`mailto:${profile.email}`} className="text-accent hover:text-amber-200">
                     {profile.email}
                   </a>
                 </div>
@@ -131,7 +134,7 @@ export default function Hero() {
                     href={profile.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-accent hover:text-cyan-300"
+                    className="inline-flex items-center gap-1 text-accent hover:text-amber-200"
                   >
                     @{profile.githubName}
                     <Icon name="arrow-up-right" size={12} />

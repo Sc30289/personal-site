@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { profile } from '../content/profile'
+import { useSiteData } from '../store/siteData'
 import Icon from './Icon'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
@@ -13,6 +13,8 @@ interface FormState {
 const emptyForm: FormState = { name: '', email: '', message: '' }
 
 export default function Contact() {
+  const { data } = useSiteData()
+  const profile = data.profile
   const [form, setForm] = useState<FormState>(emptyForm)
   const [errors, setErrors] = useState<Partial<FormState>>({})
   const [copied, setCopied] = useState(false)

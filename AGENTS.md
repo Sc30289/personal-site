@@ -8,7 +8,7 @@
 
 - 站点目标：介绍自己、展示项目、沉淀文章、提供联系入口
 - 使用人群：招聘方、同学、开发者
-- 当前版本：v1.0（首页 / 项目 / 博客 / 联系 / 404）
+- 当前版本：v1.1（首页 / 项目 / 博客 / 联系 / 404 / 管理后台）
 
 ## 二、技术栈（硬性约束）
 
@@ -20,6 +20,7 @@
 | 路由 | React Router 6，**必须使用 HashRouter** |
 | Markdown | react-markdown + remark-gfm + rehype-slug + rehype-highlight |
 | 图标 | 内联 SVG（`components/Icon.tsx`），不引入图标库 |
+| 管理后台 | `/admin` 路由 + 路由守卫 + `store/siteData.tsx`（localStorage） |
 | 部署 | GitHub Pages（静态产物，无服务端） |
 
 ### 2.1 不要引入
@@ -38,14 +39,17 @@
 src/
 ├── components/    # 可复用 UI，不含业务数据
 ├── pages/         # 路由级页面，负责组合组件与数据
-├── content/       # 全部内容数据（唯一数据源）
+├── admin/         # 管理后台：布局、登录、各管理页、通用表单组件
+├── store/         # 站点数据 Context + localStorage 持久化
+├── content/       # 默认内容数据（后台未改动时的初始值）
 ├── lib/           # 纯函数工具（markdown 解析等）
 └── hooks/         # 自定义 hook
 ```
 
 约定：
 
-- **组件不直接 import 内容文件**，由页面读取数据后通过 props 传入
+- 前台页面通过 `useSiteData()` 读取数据，**不要直接 import `content/` 里的常量**
+- `store/` 负责数据读写与持久化，`admin/` 只调用 `save()`，不直接操作 localStorage
 - `lib/` 中的函数必须是无副作用的纯函数
 - 新增页面时，在 `App.tsx` 注册路由，并在 `Navbar` 中判断是否需要入口
 
@@ -96,19 +100,22 @@ summary: 一句话摘要，会显示在列表页
 
 3. 正文从 `##` 开始写，`###` 会进入目录
 4. 不需要手动注册，构建时自动收集
+5. 也可以直接在 `/admin/posts` 新建或编辑，数据存 localStorage，优先级高于默认 Markdown
 
 ### 6.2 新增项目
 
 在 `src/content/projects.ts` 的 `projects` 数组追加对象：
 
 - `slug` 唯一，用作路由
-- `cover` 从预设图案中选：`grid` / `orbit` / `wave` / `circuit`
+- `cover` 从预设图案中选：`grid` / `orbit` / `wave` / `circuit` / `stamp`
 - `description` 使用 Markdown，支持代码块与表格
 - `links` 只放真实可访问的地址
+- 也可以在 `/admin/projects` 可视化新增，`featured` 控制是否进首页「精选作品」
 
 ### 6.3 修改个人信息
 
 只改 `src/content/profile.ts`。邮箱、GitHub、状态、时间线都在这里，全站引用会自动更新。
+日常修改也可以走 `/admin/profile`（演示账号 `admin / admin123`），保存后前台立即读取 localStorage 中的版本。
 
 ## 七、质量要求与自测清单
 

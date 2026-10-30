@@ -13,6 +13,7 @@
 | 路由 | React Router 6（Hash 模式） | 静态托管无需服务端重写规则 | Browser 模式（GitHub Pages 刷新 404） |
 | 内容 | Markdown + `import.meta.glob` | 写作零成本，构建时打包，无后端 | CMS（引入服务与成本） |
 | 渲染 | react-markdown + remark-gfm + rehype | 安全（不执行 HTML）、支持表格与代码高亮 | marked（需额外处理 HTML 注入） |
+| 后台 | 路由守卫 + localStorage 数据层 | 静态站也能改内容，后续可换真实 API | 真实后端（静态托管不需要） |
 | 托管 | GitHub Pages | 免费、HTTPS、与代码同仓、可持续 | Vercel（需额外账号）、Netlify（同） |
 
 ## 二、总体架构
@@ -57,6 +58,9 @@ personal-site/
 │   ├── main.tsx            # 挂载 + HashRouter
 │   ├── App.tsx             # 路由表 + 全局布局
 │   ├── index.css           # Tailwind 指令 + 设计系统 + 代码主题
+│   ├── admin/              # 管理后台（布局、登录、各管理页、UI 组件）
+│   ├── store/
+│   │   └── siteData.tsx    # 站点数据 Context + localStorage 持久化
 │   ├── components/         # 可复用组件
 │   │   ├── StarField.tsx   # Canvas 星空
 │   │   ├── Navbar.tsx      # 吸顶导航 + 移动端菜单
@@ -187,16 +191,33 @@ GitHub Pages 项目站点部署在 `https://<user>.github.io/<repo>/` 子路径�
 2. 校验通过后拼接 `mailto:` 链接并跳转，唤起系统邮件客户端
 3. 同时保留「一键复制邮箱」作为兜底
 
+### 5.6 管理后台与本地数据层
+
+后台挂在 `/admin` 下，与前台路由隔离：
+
+- **登录**：`/#/admin/login`，演示账号 `admin / admin123`，登录态存 `localStorage`
+- **路由守卫**：`RequireAuth` 组件在未登录时重定向到登录页
+- **数据层**：`src/store/siteData.tsx` 提供 `SiteDataProvider`，把 `profile / skills / projects / posts / settings` 统一放进 Context，并同步写入 `localStorage`（key：`personal-site:data:v1`）
+- **前台读取同一份数据**：`Hero`、`About`、`Skills`、`ProjectsSection`、`BlogList` 等组件改用 `useSiteData()`，后台保存后前台立即生效
+- **数据管理**：站点设置页支持导出 / 导入 JSON、恢复默认，便于换浏览器时迁移
+
+```ts
+const { data, save } = useSiteData()
+save({ profile: { ...data.profile, name: '豆杰晟' } })
+```
+
+> 当前是「本地数据」方案，适合课程演示与单人维护；要多人协作时，把 `store/siteData.tsx` 里的读写换成真实 API 即可，页面层无需改动。
+
 ## 六、样式系统
 
 | Token | 值 | 用途 |
 | --- | --- | --- |
-| `ink-900` | `#0B0F1A` | 页面背景 |
-| `ink-800` | `#111726` | 卡片背景 |
-| `mist` | `#E6EAF2` | 主文字 |
-| `muted` | `#9AA7BD` | 次要文字 |
-| `accent` | `#38BDF8` | 主强调色 |
-| `accent-violet` | `#818CF8` | 渐变终点 |
+| `ink-900` | `#120E0B` | 页面背景（暖黑） |
+| `ink-800` | `#1A1410` | 卡片背景 |
+| `mist` | `#F5EDE3` | 主文字 |
+| `muted` | `#A99A88` | 次要文字 |
+| `accent` | `#F59E0B` | 主强调色（琥珀） |
+| `accent-violet` | `#FB7185` | 渐变终点（珊瑚） |
 | 圆角 | 12–16px | 卡片 / 按钮 |
 | 间距 | 4px 基准 | 8 / 12 / 16 / 24 / 32 |
 
@@ -204,7 +225,7 @@ GitHub Pages 项目站点部署在 `https://<user>.github.io/<repo>/` 子路径�
 
 ## 七、性能与可访问性
 
-- 构建产物：单页应用，JS gzip 后约 150KB，CSS 约 30KB
+- 构建产物：单页应用，JS gzip 后约 200KB，CSS 约 10KB
 - 无图片资源：封面为 SVG 图案 + 渐变，图标为内联 SVG
 - 路由级代码未做懒加载（页面总数少，收益低于复杂度），后续文章增多可改为 `React.lazy`
 - 语义化：`header` / `nav` / `main` / `article` / `footer`，标题层级不跳级

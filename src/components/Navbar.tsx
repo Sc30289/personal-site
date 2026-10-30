@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { profile } from '../content/profile'
+import { useSiteData } from '../store/siteData'
 import Icon from './Icon'
 
 type NavLink =
@@ -17,6 +17,8 @@ const links: NavLink[] = [
 ]
 
 export default function Navbar() {
+  const { data } = useSiteData()
+  const profile = data.profile
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string>('')

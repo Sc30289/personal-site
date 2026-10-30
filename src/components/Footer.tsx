@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
-import { profile } from '../content/profile'
+import { useSiteData } from '../store/siteData'
 import Icon from './Icon'
 
 export default function Footer() {
+  const { data } = useSiteData()
+  const profile = data.profile
+
   return (
     <footer className="relative border-t border-white/[0.06] py-14">
       <div className="container-page">
@@ -13,7 +16,7 @@ export default function Footer() {
               <span className="h-2 w-2 rounded-full bg-gradient-to-br from-accent to-accent-violet" />
             </Link>
             <p className="mt-3 max-w-xs text-[13px] leading-6 text-muted">
-              大连民族大学物联网工程 2024 级本科生，关注前端工程、物联网与 AI 应用。用作品记录成长，用文字沉淀思考。
+              {data.settings.footerNote}
             </p>
             <div className="mt-5 flex items-center gap-2">
               <a
@@ -81,10 +84,15 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/[0.06] pt-6 text-[12px] text-muted/70 sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} 豆杰晟 · 保留所有权利</p>
-          <p className="inline-flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
-            使用 React + TypeScript + Vite 构建 · 部署于 GitHub Pages
-          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link to="/admin/login" className="transition-colors hover:text-white">
+              管理后台
+            </Link>
+            <p className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
+              使用 React + TypeScript + Vite 构建 · 部署于 GitHub Pages
+            </p>
+          </div>
         </div>
       </div>
     </footer>

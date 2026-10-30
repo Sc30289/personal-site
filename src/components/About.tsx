@@ -1,9 +1,12 @@
-import { profile } from '../content/profile'
+import { useSiteData } from '../store/siteData'
 import Icon from './Icon'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
 
 export default function About() {
+  const { data } = useSiteData()
+  const profile = data.profile
+
   return (
     <section id="about" className="relative scroll-mt-24 py-24 sm:py-28">
       <div className="container-page">
@@ -84,7 +87,7 @@ export default function About() {
                       邮箱
                     </dt>
                     <dd>
-                      <a href={`mailto:${profile.email}`} className="text-accent hover:text-cyan-300">
+                      <a href={`mailto:${profile.email}`} className="text-accent hover:text-amber-200">
                         {profile.email}
                       </a>
                     </dd>
@@ -99,7 +102,7 @@ export default function About() {
                         href={profile.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-accent hover:text-cyan-300"
+                        className="text-accent hover:text-amber-200"
                       >
                         @{profile.githubName}
                       </a>

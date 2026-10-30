@@ -2,12 +2,17 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import Icon from '../components/Icon'
-import { allTags, posts } from '../content/posts'
+import { useSiteData } from '../store/siteData'
 import { shortDate } from '../lib/markdown'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function BlogList() {
   useDocumentTitle('博客')
+  const { posts } = useSiteData()
+  const allTags = useMemo(
+    () => Array.from(new Set(posts.flatMap((post) => post.tags))).sort(),
+    [posts],
+  )
   const [query, setQuery] = useState('')
   const [tag, setTag] = useState('全部')
 

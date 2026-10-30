@@ -2,16 +2,19 @@ import { useMemo, useState } from 'react'
 import PageHeader from '../components/PageHeader'
 import ProjectCard from '../components/ProjectCard'
 import Reveal from '../components/Reveal'
-import { projectCategories, projects } from '../content/projects'
+import { projectCategories } from '../content/projects'
+import { useSiteData } from '../store/siteData'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export default function ProjectsPage() {
   useDocumentTitle('项目')
+  const { data } = useSiteData()
+  const projects = data.projects
   const [filter, setFilter] = useState<string>('all')
 
   const visible = useMemo(
     () => (filter === 'all' ? projects : projects.filter((project) => project.category === filter)),
-    [filter],
+    [filter, projects],
   )
 
   return (

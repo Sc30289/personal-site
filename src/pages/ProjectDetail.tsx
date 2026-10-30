@@ -3,14 +3,16 @@ import CoverArt from '../components/CoverArt'
 import Icon from '../components/Icon'
 import Markdown from '../components/Markdown'
 import NotFound from './NotFound'
-import { projects } from '../content/projects'
-import { profile } from '../content/profile'
+import { useSiteData } from '../store/siteData'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const linkIcon = { github: 'github', demo: 'external', doc: 'download' } as const
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>()
+  const { data } = useSiteData()
+  const projects = data.projects
+  const profile = data.profile
   const project = projects.find((item) => item.slug === slug)
   useDocumentTitle(project ? project.title : '项目未找到')
 
@@ -92,7 +94,7 @@ export default function ProjectDetail() {
               <p className="mt-3 text-[12.5px] leading-6 text-muted">
                 对这个项目有疑问，或者想聊类似的东西？欢迎直接发邮件。
               </p>
-              <a href={`mailto:${profile.email}`} className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-accent hover:text-cyan-300">
+              <a href={`mailto:${profile.email}`} className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-accent hover:text-amber-200">
                 <Icon name="mail" size={14} />
                 {profile.email}
               </a>

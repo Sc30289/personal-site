@@ -1,4 +1,4 @@
-import { skillGroups, toolbox } from '../content/skills'
+import { useSiteData } from '../store/siteData'
 import Icon, { type IconName } from './Icon'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
@@ -11,6 +11,10 @@ const iconMap: Record<string, IconName> = {
 }
 
 export default function Skills() {
+  const { data } = useSiteData()
+  const skillGroups = data.skills
+  const toolbox = data.toolbox
+
   return (
     <section id="skills" className="relative scroll-mt-24 py-24 sm:py-28">
       <div

@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
-import { featuredProjects, otherProjects, projects } from '../content/projects'
+import { useSiteData } from '../store/siteData'
 import FeaturedCard from './FeaturedCard'
 import Icon from './Icon'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
 
 export default function ProjectsSection() {
+  const { data, featured, others } = useSiteData()
+
   return (
     <section id="projects" className="relative scroll-mt-24 py-24 sm:py-28">
       <div className="container-page">
@@ -15,27 +17,27 @@ export default function ProjectsSection() {
           desc="三个从真实需求出发、完整跑通过的作品：零代码水印工具、电商图片提取扩展、AI 对话模型实验。点开卡片可以看实现思路。"
           action={
             <Link to="/projects" className="btn-ghost">
-              全部 {projects.length} 个项目
+              全部 {data.projects.length} 个项目
               <Icon name="arrow-up-right" size={15} />
             </Link>
           }
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project, index) => (
+          {featured.map((project, index) => (
             <Reveal key={project.slug} delay={index * 80} className="h-full">
               <FeaturedCard project={project} index={index} />
             </Reveal>
           ))}
         </div>
 
-        {otherProjects.length > 0 ? (
+        {others.length > 0 ? (
           <Reveal delay={160}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted/60">
                 更多作品
               </span>
-              {otherProjects.map((project) => (
+              {others.map((project) => (
                 <Link
                   key={project.slug}
                   to={`/projects/${project.slug}`}

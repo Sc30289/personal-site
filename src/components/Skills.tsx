@@ -16,7 +16,7 @@ export default function Skills() {
   const toolbox = data.toolbox
 
   return (
-    <section id="skills" className="relative scroll-mt-24 py-24 sm:py-28">
+    <section id="skills" className="relative scroll-mt-24 border-y border-black/[0.05] bg-white/60 py-24 sm:py-28">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"
         aria-hidden="true"

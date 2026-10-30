@@ -50,10 +50,20 @@ export default {
           '0%': { backgroundPosition: '0% 50%' },
           '100%': { backgroundPosition: '200% 50%' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        scrollLine: {
+          '0%': { transform: 'translateY(-120%)' },
+          '60%, 100%': { transform: 'translateY(320%)' },
+        },
       },
       animation: {
         float: 'float 7s ease-in-out infinite',
         shimmer: 'shimmer 8s linear infinite',
+        marquee: 'marquee 36s linear infinite',
+        'scroll-line': 'scrollLine 2.2s ease-in-out infinite',
       },
     },
   },

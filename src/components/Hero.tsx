@@ -39,7 +39,7 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="mt-7 text-4xl font-semibold leading-[1.12] tracking-tight text-[#111827] sm:text-5xl lg:text-[64px]">
+            <h1 className="mt-7 text-balance text-4xl font-semibold leading-[1.12] tracking-tight text-[#111827] sm:text-5xl lg:text-[64px]">
               你好，我是 <span className="gradient-text">{profile.name}</span>
             </h1>
           </Reveal>
@@ -77,25 +77,32 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={360}>
-            <div className="mt-12 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-muted/70">
-              <span className="h-px w-10 bg-gradient-to-r from-accent/60 to-transparent" />
-              scroll
+            <div className="mt-10 flex items-center gap-3">
+              <span className="relative block h-12 w-px overflow-hidden bg-black/10">
+                <span className="absolute inset-x-0 top-0 h-5 animate-scroll-line bg-gradient-to-b from-accent to-accent-violet" />
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-muted/70">scroll</span>
             </div>
           </Reveal>
         </div>
 
         <Reveal delay={200} className="relative">
           <div className="relative mx-auto w-full max-w-sm">
-            <div className="card relative overflow-hidden p-6 shadow-card">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.25em] text-muted/60">
-                  profile.card
-                </span>
-              </div>
+            <div
+              className="absolute -inset-8 -z-10 rounded-[40px] bg-gradient-to-br from-accent/15 via-transparent to-accent-violet/10 blur-2xl"
+              aria-hidden="true"
+            />
+            <div className="rounded-[28px] bg-gradient-to-br from-accent/35 via-black/[0.04] to-accent-violet/25 p-px shadow-[0_30px_70px_-40px_rgba(15,23,42,0.45)]">
+              <div className="relative overflow-hidden rounded-[27px] bg-white/95 p-6 backdrop-blur">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                  <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.25em] text-muted/60">
+                    profile.card
+                  </span>
+                </div>
 
               <div className="mt-6 flex items-center gap-4">
                 <div className="relative h-16 w-16 shrink-0 rounded-2xl bg-gradient-to-br from-accent via-accent-violet to-accent-cyan p-[2px]">
@@ -110,9 +117,9 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-4 gap-2 rounded-xl border border-black/[0.06] bg-black/[0.02] p-3">
+              <div className="mt-6 grid grid-cols-4 divide-x divide-black/[0.06] rounded-xl border border-black/[0.06] bg-black/[0.02] py-3">
                 {profile.stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
+                  <div key={stat.label} className="px-1 text-center">
                     <p className="text-lg font-semibold text-[#111827]">{stat.value}</p>
                     <p className="mt-0.5 text-[10px] text-muted">{stat.label}</p>
                   </div>
@@ -150,6 +157,7 @@ export default function Hero() {
                     {item}
                   </span>
                 ))}
+              </div>
               </div>
             </div>
           </div>

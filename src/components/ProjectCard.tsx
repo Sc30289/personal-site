@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         to={project.cover.to}
         pattern={project.cover.pattern}
         mark={project.cover.mark}
-        className="h-44 w-full"
+        className="h-44 w-full transition-transform duration-500 group-hover:scale-[1.04]"
       />
 
       <div className="relative flex flex-1 flex-col p-6">

@@ -10,7 +10,7 @@ export default function BlogSection() {
   const latest = posts.slice(0, 3)
 
   return (
-    <section id="blog" className="relative scroll-mt-24 py-24 sm:py-28">
+    <section id="blog" className="relative scroll-mt-24 border-y border-black/[0.05] bg-white/60 py-24 sm:py-28">
       <div className="container-page">
         <SectionHead
           eyebrow="04 / Blog"
@@ -29,7 +29,7 @@ export default function BlogSection() {
             <Reveal key={post.slug} delay={index * 60}>
               <Link
                 to={`/blog/${post.slug}`}
-                className="group grid gap-3 py-6 transition-colors hover:bg-black/[0.02] sm:grid-cols-[124px_1fr_40px] sm:items-center sm:gap-6"
+                className="group grid gap-3 py-6 transition-colors hover:bg-white/70 sm:grid-cols-[124px_1fr_40px] sm:items-center sm:gap-6"
               >
                 <span className="font-mono text-[12px] tracking-wide text-muted/80">
                   {shortDate(post.date)}

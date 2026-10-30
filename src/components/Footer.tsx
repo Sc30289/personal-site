@@ -8,6 +8,10 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-black/[0.06] py-14">
+      <div
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"
+        aria-hidden="true"
+      />
       <div className="container-page">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>

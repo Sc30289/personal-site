@@ -195,7 +195,7 @@ type State =
 
 ## 部署
 
-Vite 构建后直接丢给 Netlify，构建命令 \`npm run build\`，产物目录 \`dist\`。整个项目没有后端，成本为零。`},{slug:"minimind-lora",title:"MiniMind · 本地 AI 对话模型",subtitle:"64M 小模型的 SFT + LoRA 微调，以及一个带记忆的对话应用",year:"2026",category:"ai",tags:["Python","PyTorch","SFT","LoRA"],featured:!0,summary:"把课程里分散的语料合成一份、重新训出单文件权重，再配一个会记住上文、能切换本地/远端模型的网页对话应用。",cover:{from:"#a78bfa",to:"#6366f1",pattern:"orbit",mark:"AI"},highlights:["数据 272 → 323 条：统一 system 消息、补 31 条多轮、补「承认不知道」和陈述句回应","全参 SFT 5 epoch + LoRA（r=16）2 epoch，合并成 131MB 单文件，推理零额外开销","固定题集评测：关键词命中 8/10 → 10/10，复读分 0.3 → 0.0","配套应用：多轮上下文 + 摘要压缩、本地/多个远端一键切换、账号登录与数据隔离"],links:[{label:"打开 AI 对话",href:"https://djssckk-chat.ms.show",kind:"demo"}],description:`## 背景
+Vite 构建后直接丢给 Netlify，构建命令 \`npm run build\`，产物目录 \`dist\`。整个项目没有后端，成本为零。`},{slug:"minimind-lora",title:"MiniMind · 本地 AI 对话模型",subtitle:"64M 小模型的 SFT + LoRA 微调，以及一个带记忆的对话应用",year:"2026",category:"ai",tags:["Python","PyTorch","SFT","LoRA"],featured:!0,summary:"把课程里分散的语料合成一份、重新训出单文件权重，再配一个会记住上文、能切换本地/远端模型的网页对话应用。",cover:{from:"#a78bfa",to:"#6366f1",pattern:"orbit",mark:"AI"},highlights:["数据 272 → 323 条：统一 system 消息、补 31 条多轮、补「承认不知道」和陈述句回应","全参 SFT 5 epoch + LoRA（r=16）2 epoch，合并成 131MB 单文件，推理零额外开销","固定题集评测：关键词命中 8/10 → 10/10，复读分 0.3 → 0.0","配套应用：多轮上下文 + 摘要压缩、本地/多个远端一键切换、账号登录与数据隔离"],links:[{label:"打开 AI 对话",href:"https://www.modelscope.cn/studios/djssckk/chat?mode=full",kind:"demo"}],description:`## 背景
 
 课程给了三份东西：SFT 的数据格式、LoRA 的注入与合并、以及一份孙悟空语料。原来的做法是「三份数据各训一个权重」，成品只能选一个用。
 这次想做完整：**合成一份数据、按 SFT → LoRA → 合并的顺序训出单文件权重，再配一个真的能用的对话界面。**
@@ -249,7 +249,7 @@ python tools/merge_lora.py --base out/chat_full.pth --lora out/lora_chat.pth --o
 
 ## 在线体验
 
-公网地址：<https://djssckk-chat.ms.show>（魔搭创空间，Docker 部署，在线模型模式）。
+公网地址：<https://www.modelscope.cn/studios/djssckk/chat?mode=full>（魔搭创空间，Docker 部署，在线模型模式）。
 直接注册一个账号就能聊；打开页面右上角设置可以切换模型、调整记忆轮数。
 
 ## 怎么运行

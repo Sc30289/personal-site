@@ -237,7 +237,7 @@ Vite 构建后直接丢给 Netlify，构建命令 \`npm run build\`，产物目�
       '配套应用：多轮上下文 + 摘要压缩、本地/多个远端一键切换、账号登录与数据隔离',
     ],
     links: [
-      { label: '打开 AI 对话', href: 'https://djssckk-chat.ms.show', kind: 'demo' },
+      { label: '打开 AI 对话', href: 'https://www.modelscope.cn/studios/djssckk/chat?mode=full', kind: 'demo' },
     ],
     description: `## 背景
 
@@ -293,7 +293,7 @@ python tools/merge_lora.py --base out/chat_full.pth --lora out/lora_chat.pth --o
 
 ## 在线体验
 
-公网地址：<https://djssckk-chat.ms.show>（魔搭创空间，Docker 部署，在线模型模式）。
+公网地址：<https://www.modelscope.cn/studios/djssckk/chat?mode=full>（魔搭创空间，Docker 部署，在线模型模式）。
 直接注册一个账号就能聊；打开页面右上角设置可以切换模型、调整记忆轮数。
 
 ## 怎么运行

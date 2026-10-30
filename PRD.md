@@ -80,7 +80,7 @@
 ├── #hero             Hero + 星空背景
 ├── #about            关于我 / 时间线
 ├── #skills           技能地图
-├── #projects         作品集（5 个）
+├── #projects         作品集（4 个）
 ├── #blog             最新文章（3 篇）
 └── #contact          联系方式 + 留言表单
 

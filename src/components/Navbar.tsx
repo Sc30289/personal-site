@@ -175,6 +175,14 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
+            <Link
+              to="/admin/login"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-muted transition-colors hover:border-accent/40 hover:text-[#111827]"
+              aria-label="管理后台"
+              title="管理后台"
+            >
+              <Icon name="settings" size={16} />
+            </Link>
             <a
               href={profile.github}
               target="_blank"
@@ -238,7 +246,7 @@ export default function Navbar() {
               </button>
             ),
           )}
-          <div className="mt-8 flex items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href={profile.github} target="_blank" rel="noreferrer" className="btn-ghost">
               <Icon name="github" size={16} />
               GitHub
@@ -247,6 +255,10 @@ export default function Navbar() {
               <Icon name="mail" size={16} />
               邮件联系
             </a>
+            <Link to="/admin/login" onClick={() => setOpen(false)} className="btn-ghost">
+              <Icon name="settings" size={16} />
+              管理后台
+            </Link>
           </div>
         </div>
       </div>

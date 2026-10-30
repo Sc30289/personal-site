@@ -116,6 +116,28 @@ export function SiteDataProvider({ children }: { children: ReactNode }) {
     }
   }, [data])
 
+  // 后台在另一个标签页保存时，前台标签页实时同步
+  useEffect(() => {
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== STORAGE_KEY || !event.newValue) return
+      try {
+        const parsed = JSON.parse(event.newValue) as Partial<SiteData>
+        setData((prev) => ({
+          profile: { ...prev.profile, ...(parsed.profile ?? {}) },
+          skills: parsed.skills ?? prev.skills,
+          toolbox: parsed.toolbox ?? prev.toolbox,
+          projects: parsed.projects ?? prev.projects,
+          posts: parsed.posts ?? prev.posts,
+          settings: { ...prev.settings, ...(parsed.settings ?? {}) },
+        }))
+      } catch {
+        /* 忽略损坏的数据 */
+      }
+    }
+    window.addEventListener('storage', onStorage)
+    return () => window.removeEventListener('storage', onStorage)
+  }, [])
+
   const save = useCallback((patch: Partial<SiteData>) => {
     setData((prev) => ({ ...prev, ...patch, settings: { ...prev.settings, ...(patch.settings ?? {}) } }))
   }, [])

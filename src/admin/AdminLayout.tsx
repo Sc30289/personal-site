@@ -77,10 +77,15 @@ export default function AdminLayout() {
           </nav>
 
           <div className="mt-auto space-y-2 border-t border-black/[0.06] pt-4 text-[12px]">
-            <Link to="/" className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted hover:text-[#111827]">
+            <a
+              href="#/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted hover:text-[#111827]"
+            >
               <Icon name="external" size={14} />
-              查看站点
-            </Link>
+              打开个人主页
+            </a>
             <button
               type="button"
               onClick={handleLogout}
@@ -100,9 +105,14 @@ export default function AdminLayout() {
               <span className="text-[#111827]">{current}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Link to="/" className="hidden text-[12px] text-muted hover:text-[#111827] sm:inline">
-                查看站点 ↗
-              </Link>
+              <a
+                href="#/"
+                target="_blank"
+                rel="noreferrer"
+                className="hidden text-[12px] text-muted hover:text-[#111827] sm:inline"
+              >
+                打开个人主页 ↗
+              </a>
               <button
                 type="button"
                 onClick={handleLogout}

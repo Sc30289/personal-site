@@ -63,6 +63,16 @@ export default function ProjectDetail() {
           ))}
         </div>
 
+        {project.localApp ? (
+          <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-black/[0.06] bg-white/70 px-4 py-3 text-[12px] text-muted">
+            <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] text-accent">本地应用</span>
+            <span>
+              在项目目录运行 <code className="rounded bg-black/[0.05] px-1.5 py-0.5 font-mono text-[11px]">python server.py</code>
+              ，浏览器打开 http://127.0.0.1:8765 即可对话
+            </span>
+          </div>
+        ) : null}
+
         <CoverArt
           from={project.cover.from}
           to={project.cover.to}

@@ -14,7 +14,7 @@ export default function ProjectsSection() {
         <SectionHead
           eyebrow="03 / Projects"
           title="精选作品"
-          desc="三个从真实需求出发、完整跑通过的作品：零代码水印工具、电商图片提取扩展、AI 对话模型实验。点开卡片可以看实现思路。"
+          desc="三个从真实需求出发、完整跑通过的作品：零代码水印工具、电商图片提取扩展、本地 AI 对话应用。点开卡片可以看实现思路与踩坑记录。"
           action={
             <Link to="/projects" className="btn-ghost">
               全部 {data.projects.length} 个项目

@@ -19,6 +19,8 @@ export interface Project {
   links: ProjectLink[]
   description: string
   featured?: boolean
+  /** 本地运行的应用：详情页展示运行方式，不提供线上入口 */
+  localApp?: boolean
 }
 
 export const projects: Project[] = [
@@ -219,55 +221,89 @@ Vite 构建后直接丢给 Netlify，构建命令 \`npm run build\`，产物目�
   },
   {
     slug: 'minimind-lora',
-    title: 'MiniMind · AI 对话模型',
-    subtitle: '小模型的 SFT 与 LoRA 微调实验',
-    year: '2025',
+    title: 'MiniMind · 本地 AI 对话模型',
+    subtitle: '64M 小模型的 SFT + LoRA 微调，以及一个带记忆的对话应用',
+    year: '2026',
     category: 'ai',
-    tags: ['Python', 'PyTorch', 'LoRA'],
+    tags: ['Python', 'PyTorch', 'SFT', 'LoRA'],
     featured: true,
     summary:
-      '在开源小模型上跑通 SFT 与 LoRA 微调：数据清洗、训练脚本、显存优化，以及一轮完整的效果对比。',
+      '把课程里分散的语料合成一份、重新训出单文件权重，再配一个会记住上文、能切换本地/远端模型的网页对话应用。',
     cover: { from: '#a78bfa', to: '#6366f1', pattern: 'orbit', mark: 'AI' },
     highlights: [
-      '从零跑通 SFT 流程：数据格式、tokenizer、训练循环',
-      'LoRA 只训练少量参数，单卡显存占用明显下降',
-      '固定随机种子 + 同一批测试问题做前后对比',
-      '把踩过的坑整理成可复用的训练清单',
+      '数据 272 → 323 条：统一 system 消息、补 31 条多轮、补「承认不知道」和陈述句回应',
+      '全参 SFT 5 epoch + LoRA（r=16）2 epoch，合并成 131MB 单文件，推理零额外开销',
+      '固定题集评测：关键词命中 8/10 → 10/10，复读分 0.3 → 0.0',
+      '配套应用：多轮上下文 + 摘要压缩、本地/多个远端一键切换、账号登录与数据隔离',
     ],
-    links: [{ label: '训练脚本', href: 'https://github.com/Sc30289', kind: 'github' }],
+    links: [],
+    localApp: true,
     description: `## 背景
 
-大模型很贵，小模型很便宜。我想知道：一个几千万参数的小模型，经过一轮 LoRA 微调，能不能在特定任务上变得「像样」一点。
+课程给了三份东西：SFT 的数据格式、LoRA 的注入与合并、以及一份孙悟空语料。原来的做法是「三份数据各训一个权重」，成品只能选一个用。
+这次想做完整：**合成一份数据、按 SFT → LoRA → 合并的顺序训出单文件权重，再配一个真的能用的对话界面。**
 
-## 流程
+## 数据：把三份合成一份
 
-1. **数据**：把问答整理成 \`{"instruction": ..., "output": ...}\` 的 JSONL，去掉重复和过短的样本
-2. **训练**：冻结主干，只给注意力层的线性投影加 LoRA 适配器
-3. **评估**：固定 20 个测试问题，微调前后各跑一遍，人工对比
+原数据 272 条（通用 78 + 自我认知 39 + 孙悟空 155），全是单轮、没有 system。改造做了四件事：
 
-\`\`\`python
-from peft import LoraConfig, get_peft_model
+1. **统一加 system**：通用数据用「你是一个中文 AI 助手。」，语料用「你现在扮演孙悟空」——同一个权重既能当助手也能演角色，身份不互相污染
+2. **补多轮** 31 条：教它「接着上文说」，比如先记住「我叫小林，做前端」，再问「我刚才说我做什么的」
+3. **补边界样本**：8 条「不知道就说不知道」，12 条陈述句回应（用户多半在陈述，不是在提问）
+4. 去重后共 323 条，平均 188 字符
 
-config = LoraConfig(
-    r=8,
-    lora_alpha=16,
-    target_modules=["q_proj", "v_proj"],
-    lora_dropout=0.05,
-    task_type="CAUSAL_LM",
-)
-model = get_peft_model(base_model, config)
-model.print_trainable_parameters()
+## 训练：SFT 5 epoch，再叠 LoRA
+
+\`\`\`powershell
+python trainer_sft.py --data_path ./dataset/sft_all.jsonl --save_weight chat_full --epochs 5 --learning_rate 5e-5 --batch_size 8
+python trainer_lora.py --data_path ./dataset/sft_all.jsonl --from_weight chat_full --lora_name lora_chat --lora_rank 16 --epochs 2
+python tools/merge_lora.py --base out/chat_full.pth --lora out/lora_chat.pth --out out/chat.pth
 \`\`\`
 
-## 结果与反思
+合并就是 \`W ← W + B·A\`，之后推理完全不需要 LoRA 分支。合并结果和「基座 + LoRA」的 logits 最大差 6.3e-3，只是 fp16 存储误差。
 
-- 任务内的回答明显更贴题，但模型的通用能力会有一点下降
-- 学习率比数据量更敏感：\`2e-4\` 时很快就过拟合
-- 评估必须固定问题集，否则很容易「感觉变好了」
+## 踩过的三个坑
 
-## 最大的收获
+**1. CPU 上 batch=16 会原生崩溃。** 进程以 \`0xC0000005\`（access violation）退出，没有 Python 异常，栈顶停在 \`cross_entropy\`。二分定位后发现是 Windows + 这份 CPU 版 torch 在大张量多线程下的问题：batch 16 + 24 线程必崩，batch 8 或 8 线程都正常。最后固定 \`batch_size=8\` + \`OMP_NUM_THREADS=8\`。
 
-微调不是魔法。数据质量、评估方式、训练稳定性，任何一环偷懒，结果都会骗人。`,
+**2. 中文被 token 边界切开。** 一个汉字跨两个 token 时，前半截会被解码成替换字符，页面上就是乱码方块。改成累积 token id 再整体解码、尾部残缺字符先扣住不发。
+
+**3. 小模型采样必翻车。** temperature 0.85 时「我叫小林」能答出一段英文。改成贪心解码，并把训练时那句短 system 固定下来，回答才稳定。
+
+## 结果
+
+用 14 题固定题集、贪心解码做的对比（同一套 prompt，可复现）：
+
+| 指标 | 旧权重 | 新权重 |
+| --- | --- | --- |
+| 关键词命中 | 8/10 | **10/10** |
+| 平均复读分 | 0.3 | **0.0** |
+| 多轮追问「我刚才说我做什么的」 | 答成「小林先说一点点…」 | **「你说你是做前端开发的。」** |
+| 「你叫什么名字」 | 「我叫通义千问」 | **「我叫 MiniMind，你也可以叫我小敏。」** |
+| 角色扮演（system 指定） | 语义崩坏 | **「里面没有水，是一个安身的好地方…」** |
+
+## 应用层
+
+权重只是半成品，所以又写了一个网页对话应用（纯 Python 标准库 + 原生前端）：
+
+- **记忆**：每次带最近 6 轮原文；超出的旧对话压缩成摘要常驻 system，滚动更新
+- **多引擎**：本地 64M 与多个远端接口（DeepSeek / Moonshot / Ollama）一键切换，Key 各自保存
+- **账号**：注册 / 改用户名 / 改密码 / 退出，会话按账号隔离，口令用 PBKDF2 加盐存储
+
+## 怎么运行
+
+\`\`\`powershell
+cd ai-chat
+python server.py
+\`\`\`
+
+打开 http://127.0.0.1:8765 就能聊：没有 API Key 时默认用本地 miniMind（会自动找 \`../minimind-vscode/.venv\` 里的解释器），
+在右上角设置里可以随时切到 DeepSeek / Moonshot / Ollama 等 OpenAI 兼容端点。
+
+## 反思
+
+64M 的参数是硬上限：题目问法贴近训练数据时很稳，稍微换个说法就退化。这次真正学到的不是「怎么调 loss」，而是
+**数据里没有的能力，靠训练技巧补不回来**——想要通用能力，只能换更大的底座或接远端模型。`,
   },
 ]
 

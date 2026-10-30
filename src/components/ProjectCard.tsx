@@ -12,7 +12,6 @@ const linkIcon: Record<string, 'github' | 'external' | 'download'> = {
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="group card relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-glow">
-      {/* 整卡点击进入详情页；外链通过更高层级保持可点 */}
       <Link
         to={`/projects/${project.slug}`}
         className="absolute inset-0 z-10 rounded-2xl focus-visible:ring-2 focus-visible:ring-accent"
@@ -36,6 +35,9 @@ export default function ProjectCard({ project }: { project: Project }) {
               {tag}
             </span>
           ))}
+          {project.localApp ? (
+            <span className="rounded-full bg-accent/10 px-2 py-0.5 text-accent">本地应用</span>
+          ) : null}
         </div>
 
         <h3 className="mt-3 text-lg font-semibold text-[#111827] transition-colors group-hover:text-accent">

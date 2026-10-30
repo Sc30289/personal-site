@@ -10,7 +10,7 @@ interface FeaturedCardProps {
   index: number
 }
 
-/** 首页「精选作品」大卡片：整卡可点击进入详情页，右下角保留在线体验入口。 */
+/** 首页「精选作品」大卡片：整卡可点击进入详情页，外链通过更高层级保持可点。 */
 export default function FeaturedCard({ project, index }: FeaturedCardProps) {
   const demo = project.links.find((link) => link.kind === 'demo')
 
@@ -33,6 +33,11 @@ export default function FeaturedCard({ project, index }: FeaturedCardProps) {
         <span className="absolute left-4 top-4 rounded-full border border-black/15 bg-black/60 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
           精选 0{index + 1}
         </span>
+        {project.localApp ? (
+          <span className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/55 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
+            本地应用
+          </span>
+        ) : null}
       </div>
 
       <div className="relative flex flex-1 flex-col p-6">

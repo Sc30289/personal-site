@@ -41,9 +41,12 @@ export interface SiteData {
   projects: Project[]
   posts: PostDraft[]
   settings: SiteSettings
+  /** 默认内容版本号：内容层面大改时 +1，用来让旧的 localStorage 快照失效 */
+  contentVersion?: number
 }
 
 const STORAGE_KEY = 'personal-site:data:v1'
+const CONTENT_VERSION = 2
 
 const defaultSettings: SiteSettings = {
   siteTitle: '豆杰晟 · 个人网站',
@@ -67,6 +70,7 @@ const defaultData: SiteData = {
     content: post.content,
   })),
   settings: defaultSettings,
+  contentVersion: CONTENT_VERSION,
 }
 
 function clone<T>(value: T): T {
@@ -79,13 +83,17 @@ function loadStored(): SiteData {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (!raw) return clone(defaultData)
     const parsed = JSON.parse(raw) as Partial<SiteData>
+    // 旧快照（内容版本更低）里的项目数据是旧的，这条目改了文案后必须用默认值覆盖，
+    // 否则作者自己的浏览器会一直显示上一版；其余数据（文章、个人信息）照常保留。
+    const freshProjects = (parsed.contentVersion ?? 1) >= CONTENT_VERSION
     return {
       profile: { ...clone(defaultData.profile), ...(parsed.profile ?? {}) },
       skills: parsed.skills ?? clone(defaultData.skills),
       toolbox: parsed.toolbox ?? clone(defaultData.toolbox),
-      projects: parsed.projects ?? clone(defaultData.projects),
+      projects: freshProjects && parsed.projects ? parsed.projects : clone(defaultData.projects),
       posts: parsed.posts ?? clone(defaultData.posts),
       settings: { ...defaultSettings, ...(parsed.settings ?? {}) },
+      contentVersion: CONTENT_VERSION,
     }
   } catch {
     return clone(defaultData)

@@ -22,7 +22,7 @@ export default function ProjectsPage() {
       <PageHeader
         eyebrow="Projects"
         title="项目与作品"
-        desc={`${projects.length} 个完整跑通过的作品：零代码水印工具、电商图片提取扩展、前端应用与 AI 对话模型。每个都附有实现思路与踩坑记录。`}
+        desc={`${projects.length} 个完整跑通过的作品：零代码水印工具、电商图片提取扩展、前端应用与本地 AI 对话模型（SFT + LoRA）。每个都附有实现思路与踩坑记录。`}
       >
         <div className="mt-8 flex flex-wrap gap-2">
           {projectCategories.map((category) => (

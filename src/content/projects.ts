@@ -237,9 +237,8 @@ Vite 构建后直接丢给 Netlify，构建命令 \`npm run build\`，产物目�
       '配套应用：多轮上下文 + 摘要压缩、本地/多个远端一键切换、账号登录与数据隔离',
     ],
     links: [
-      { label: '打开 AI 对话', href: 'http://127.0.0.1:8765/', kind: 'demo' },
+      { label: '打开 AI 对话', href: 'https://djssckk-chat.ms.show', kind: 'demo' },
     ],
-    localApp: true,
     description: `## 背景
 
 课程给了三份东西：SFT 的数据格式、LoRA 的注入与合并、以及一份孙悟空语料。原来的做法是「三份数据各训一个权重」，成品只能选一个用。
@@ -292,7 +291,14 @@ python tools/merge_lora.py --base out/chat_full.pth --lora out/lora_chat.pth --o
 - **多引擎**：本地 64M 与多个远端接口（DeepSeek / Moonshot / Ollama）一键切换，Key 各自保存
 - **账号**：注册 / 改用户名 / 改密码 / 退出，会话按账号隔离，口令用 PBKDF2 加盐存储
 
+## 在线体验
+
+公网地址：<https://djssckk-chat.ms.show>（魔搭创空间，Docker 部署，在线模型模式）。
+直接注册一个账号就能聊；打开页面右上角设置可以切换模型、调整记忆轮数。
+
 ## 怎么运行
+
+本地跑（可选，能用上你自己的 64M 权重）：
 
 \`\`\`powershell
 cd ai-chat

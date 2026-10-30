@@ -236,7 +236,9 @@ Vite 构建后直接丢给 Netlify，构建命令 \`npm run build\`，产物目�
       '固定题集评测：关键词命中 8/10 → 10/10，复读分 0.3 → 0.0',
       '配套应用：多轮上下文 + 摘要压缩、本地/多个远端一键切换、账号登录与数据隔离',
     ],
-    links: [],
+    links: [
+      { label: '打开 AI 对话', href: 'http://127.0.0.1:8765/', kind: 'demo' },
+    ],
     localApp: true,
     description: `## 背景
 

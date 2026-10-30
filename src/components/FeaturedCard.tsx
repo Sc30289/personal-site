@@ -66,7 +66,12 @@ export default function FeaturedCard({ project, index }: FeaturedCardProps) {
               href={demo.href}
               target="_blank"
               rel="noreferrer"
-              className="relative z-20 inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1.5 text-[12px] text-mist transition-colors hover:border-accent/40 hover:text-[#111827]"
+              title={/127\.0\.0\.1|localhost/.test(demo.href) ? '需先在本机运行 python server.py' : demo.label}
+              className={
+                /127\.0\.0\.1|localhost/.test(demo.href)
+                  ? 'relative z-20 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-accent to-accent-violet px-3.5 py-1.5 text-[12px] font-medium text-[#201509] shadow-sm transition-transform hover:-translate-y-0.5'
+                  : 'relative z-20 inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1.5 text-[12px] text-mist transition-colors hover:border-accent/40 hover:text-[#111827]'
+              }
             >
               <Icon name={linkIcon[demo.kind]} size={13} />
               {demo.label}

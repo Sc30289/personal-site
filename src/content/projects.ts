@@ -1,4 +1,4 @@
-export type CoverPattern = 'grid' | 'orbit' | 'wave' | 'circuit'
+export type CoverPattern = 'grid' | 'orbit' | 'wave' | 'circuit' | 'stamp'
 
 export interface ProjectLink {
   label: string
@@ -18,9 +18,70 @@ export interface Project {
   highlights: string[]
   links: ProjectLink[]
   description: string
+  featured?: boolean
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'watermark',
+    title: '图片水印助手',
+    subtitle: '用秒哒零代码平台做的批量加水印工具',
+    year: '2026',
+    category: 'web',
+    tags: ['零代码', '秒哒', 'Canvas'],
+    summary:
+      '上传图片、加文字或图片水印，支持四角 / 居中定位、全屏平铺、透明度与角度调节，实时预览后一键下载。',
+    cover: { from: '#22d3ee', to: '#0284c7', pattern: 'stamp', mark: 'WM' },
+    featured: true,
+    highlights: [
+      '百度秒哒生成：自然语言描述需求，直接出可用页面',
+      '文字 / 图片两种水印，四角、居中或全屏平铺',
+      '透明度、角度、边距可调，防搬运的同时不挡主体',
+      'Canvas 实时预览，按原图分辨率导出',
+    ],
+    links: [
+      { label: '在线体验', href: 'https://app-fcri6lx0tqm9.miaoda.online', kind: 'demo' },
+    ],
+    description: `## 需求来自真实场景
+
+做电商和自媒体的同学，图片经常被搬运，加个水印是最直接的防护。但用 PS 一张张处理太慢，于是想做一个「上传 → 调参数 → 下载」的小工具。
+
+## 用秒哒零代码搭出来
+
+在百度秒哒里用自然语言描述需求，平台直接生成了可用的页面：
+
+- 上传图片（支持多张）
+- 文字水印：内容、字号、颜色
+- 图片水印：上传 logo 作为水印
+- 位置：四个角、居中，或全屏平铺
+- 参数：透明度、旋转角度、边距
+- 实时预览 + 一键下载
+
+## 实现要点
+
+预览和导出都走 Canvas：先把原图画到画布上，再按参数叠加水印文字或图片，最后 \`toBlob\` 导出 PNG，保证输出是原图分辨率而不是缩略图。
+
+\`\`\`js
+const canvas = document.createElement('canvas')
+canvas.width = img.naturalWidth
+canvas.height = img.naturalHeight
+const ctx = canvas.getContext('2d')
+ctx.drawImage(img, 0, 0)
+ctx.globalAlpha = opacity
+ctx.drawImage(logo, x, y, w, h) // 或 fillText
+canvas.toBlob((blob) => download(blob), 'image/png')
+\`\`\`
+
+## 局限与后续
+
+- 纯前端处理，图片不上传服务器，隐私友好
+- 批量处理多张时受浏览器内存限制
+- 后续想加：水印模板保存、批量重命名、EXIF 保留
+
+## 收获
+
+零代码平台把「想法 → 可用产品」的路径压缩到几十分钟，很适合验证需求；当交互变复杂时，还是需要自己写代码——这也是我后来做 ImageGrab 的原因。`,
+  },
   {
     slug: 'imagegrab',
     title: '图提取 · ImageGrab',
@@ -28,6 +89,7 @@ export const projects: Project[] = [
     year: '2025',
     category: 'ext',
     tags: ['Chrome MV3', 'JavaScript', 'Canvas'],
+    featured: true,
     summary:
       '在淘宝 / 京东 / 拼多多商家版详情页右下角注入按钮，一次点击提取全部商品图，勾选后批量下载为 PNG。',
     cover: { from: '#0ea5e9', to: '#6366f1', pattern: 'grid', mark: 'IG' },
@@ -218,11 +280,12 @@ Proteus 里挂上示波器看 P1.5 的波形：归零瞬间出现约 200ms 的�
   },
   {
     slug: 'minimind-lora',
-    title: 'MiniMind LoRA 微调实践',
-    subtitle: '把一个小模型调到「会聊天」',
+    title: 'MiniMind · AI 对话模型',
+    subtitle: '小模型的 SFT 与 LoRA 微调实验',
     year: '2025',
     category: 'ai',
     tags: ['Python', 'PyTorch', 'LoRA'],
+    featured: true,
     summary:
       '在开源小模型上跑通 SFT 与 LoRA 微调：数据清洗、训练脚本、显存优化，以及一轮完整的效果对比。',
     cover: { from: '#a78bfa', to: '#6366f1', pattern: 'orbit', mark: 'AI' },
@@ -276,3 +339,6 @@ export const projectCategories = [
   { key: 'ai', label: 'AI' },
   { key: 'embedded', label: '嵌入式' },
 ] as const
+
+export const featuredProjects = projects.filter((project) => project.featured)
+export const otherProjects = projects.filter((project) => !project.featured)

@@ -11,18 +11,23 @@ const linkIcon: Record<string, 'github' | 'external' | 'download'> = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group card flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-glow">
-      <Link to={`/projects/${project.slug}`} aria-label={`查看项目：${project.title}`}>
-        <CoverArt
-          from={project.cover.from}
-          to={project.cover.to}
-          pattern={project.cover.pattern}
-          mark={project.cover.mark}
-          className="h-44 w-full"
-        />
-      </Link>
+    <article className="group card relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-glow">
+      {/* 整卡点击进入详情页；外链通过更高层级保持可点 */}
+      <Link
+        to={`/projects/${project.slug}`}
+        className="absolute inset-0 z-10 rounded-2xl focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label={`查看项目：${project.title}`}
+      />
 
-      <div className="flex flex-1 flex-col p-6">
+      <CoverArt
+        from={project.cover.from}
+        to={project.cover.to}
+        pattern={project.cover.pattern}
+        mark={project.cover.mark}
+        className="h-44 w-full"
+      />
+
+      <div className="relative flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted">
           <span className="font-mono">{project.year}</span>
           <span className="h-1 w-1 rounded-full bg-muted/50" />
@@ -34,16 +39,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <h3 className="mt-3 text-lg font-semibold text-white transition-colors group-hover:text-accent">
-          <Link to={`/projects/${project.slug}`}>{project.title}</Link>
+          {project.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-[13px] leading-6 text-muted">{project.summary}</p>
 
         <div className="mt-auto flex items-center justify-between pt-5">
-          <Link to={`/projects/${project.slug}`} className="link-arrow">
+          <span className="link-arrow">
             查看详情
             <Icon name="arrow-right" size={15} />
-          </Link>
-          <div className="flex items-center gap-1">
+          </span>
+          <div className="relative z-20 flex items-center gap-1">
             {project.links.map((link) => (
               <a
                 key={link.href}

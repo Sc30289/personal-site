@@ -48,7 +48,7 @@ export const profile: Profile = {
   githubName: 'Sc30289',
   focus: ['前端工程', '物联网应用', 'AI 应用'],
   stats: [
-    { label: '项目', value: '4' },
+    { label: '项目', value: '5' },
     { label: '博客', value: '4' },
     { label: '技术方向', value: '3' },
     { label: '好奇心', value: '∞' },

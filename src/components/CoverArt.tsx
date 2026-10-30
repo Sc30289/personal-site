@@ -76,6 +76,22 @@ export default function CoverArt({ from, to, pattern, mark, className = '' }: Co
           </g>
         )}
 
+        {pattern === 'stamp' && (
+          <g fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5">
+            <circle cx="480" cy="120" r="46" />
+            <circle cx="480" cy="120" r="78" strokeOpacity="0.6" />
+            <circle cx="480" cy="120" r="110" strokeOpacity="0.35" />
+            <circle cx="480" cy="120" r="142" strokeOpacity="0.18" />
+            <circle cx="480" cy="120" r="6" fill="rgba(255,255,255,0.9)" stroke="none" />
+            <g strokeOpacity="0.16">
+              <path d="M20 360 L260 120" />
+              <path d="M60 400 L300 160" />
+              <path d="M100 440 L340 200" />
+              <path d="M140 480 L380 240" />
+            </g>
+          </g>
+        )}
+
         <rect width="640" height="400" fill={`url(#fade-${id})`} />
       </svg>
 

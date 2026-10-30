@@ -63,7 +63,7 @@ export default function Navbar() {
       setActiveSection('')
       return
     }
-    const ids = ['about', 'skills', 'contact']
+    const ids = ['about', 'skills', 'projects', 'contact']
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el))

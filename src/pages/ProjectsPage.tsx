@@ -19,7 +19,7 @@ export default function ProjectsPage() {
       <PageHeader
         eyebrow="Projects"
         title="项目与作品"
-        desc="四个完整跑通过的项目：浏览器扩展、前端应用、嵌入式实验和小模型微调。每个都附有实现思路与踩坑记录。"
+        desc={`${projects.length} 个完整跑通过的作品：零代码水印工具、电商图片提取扩展、前端应用、AI 对话模型与嵌入式实验。每个都附有实现思路与踩坑记录。`}
       >
         <div className="mt-8 flex flex-wrap gap-2">
           {projectCategories.map((category) => (

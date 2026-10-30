@@ -29,15 +29,15 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #120e0b;
+    background: #0a1610;
   }
   ::-webkit-scrollbar-thumb {
-    background: #352b21;
+    background: #21402f;
     border-radius: 999px;
-    border: 2px solid #120e0b;
+    border: 2px solid #0a1610;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #4a3b2d;
+    background: #2e5640;
   }
 
   :focus-visible {
@@ -66,10 +66,10 @@
   }
 
   .glass {
-    background: rgba(18, 14, 11, 0.64);
+    background: rgba(10, 22, 16, 0.66);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border-bottom: 1px solid rgba(214, 194, 168, 0.12);
+    border-bottom: 1px solid rgba(168, 196, 178, 0.12);
   }
 
   .card {
@@ -161,21 +161,21 @@
 /* Markdown 正文：prose 覆盖 + 代码高亮                                 */
 /* ------------------------------------------------------------------ */
 .prose-site {
-  --tw-prose-body: #e2d8ca;
-  --tw-prose-headings: #fdf6ec;
+  --tw-prose-body: #d7e3d9;
+  --tw-prose-headings: #f1f7f2;
   --tw-prose-links: #fbbf24;
   --tw-prose-bold: #ffffff;
   --tw-prose-counters: #fb7185;
   --tw-prose-bullets: #f59e0b;
-  --tw-prose-hr: rgba(214, 194, 168, 0.18);
-  --tw-prose-quotes: #efe4d6;
+  --tw-prose-hr: rgba(168, 196, 178, 0.18);
+  --tw-prose-quotes: #e3ede5;
   --tw-prose-quote-borders: #f59e0b;
-  --tw-prose-captions: #a99a88;
-  --tw-prose-code: #fdf6ec;
-  --tw-prose-pre-code: #ece2d5;
-  --tw-prose-pre-bg: #0d0a08;
-  --tw-prose-th-borders: rgba(214, 194, 168, 0.25);
-  --tw-prose-td-borders: rgba(214, 194, 168, 0.12);
+  --tw-prose-captions: #96a99b;
+  --tw-prose-code: #f1f7f2;
+  --tw-prose-pre-code: #e0eae2;
+  --tw-prose-pre-bg: #050c08;
+  --tw-prose-th-borders: rgba(168, 196, 178, 0.25);
+  --tw-prose-td-borders: rgba(168, 196, 178, 0.12);
   font-size: 1.02rem;
   line-height: 1.9;
 }
@@ -248,7 +248,7 @@
 }
 
 .prose-site th {
-  background: rgba(214, 194, 168, 0.06);
+  background: rgba(168, 196, 178, 0.06);
 }
 
 /* highlight.js：Night Owl 风格配色 */
